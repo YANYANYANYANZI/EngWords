@@ -1,4 +1,5 @@
 const API_BASE = "http://127.0.0.1:8000/api"; // ensure matches backend service port
+const DB_API_PREFIX = "/db";
 const unitListEl = document.getElementById("unitList");
 const wordGridEl = document.getElementById("wordGrid");
 const unitNameEl = document.getElementById("unitName");
@@ -34,6 +35,18 @@ let searchHistory = [];
 let highlightWord = null;
 let restoreScrollY = null;
 const DETAIL_STATE_KEY = "vocab_detail_open_state";
+
+async function apiFetch(path, options = {}) {
+  const dbPath = `${API_BASE}${DB_API_PREFIX}${path}`;
+  try {
+    const dbRes = await fetch(dbPath, options);
+    if (dbRes.ok) return dbRes;
+    console.warn("DB API fallback", path, dbRes.status, await dbRes.text());
+  } catch (error) {
+    console.warn("DB API unavailable, fallback to JSON API", path, error);
+  }
+  return fetch(`${API_BASE}${path}`, options);
+}
 
 const UNIT_TITLES = {
   Unit_1: "商业 / 政治 / 社会",
@@ -150,7 +163,7 @@ function groupUnits(items) {
 }
 
 async function fetchUnits() {
-  const res = await fetch(`${API_BASE}/units`);
+  const res = await apiFetch(`/units`);
   units = await res.json();
   unitTree = groupUnits(units);
   renderUnitList();
@@ -158,7 +171,7 @@ async function fetchUnits() {
 
 async function loadAllWords() {
   try {
-    const res = await fetch(`${API_BASE}/all_words`);
+    const res = await apiFetch(`/all_words`);
     if (!res.ok) throw new Error("all_words fetch failed");
     allWords = await res.json();
     wordIndex = {};
@@ -216,7 +229,7 @@ function renderUnitList() {
 async function loadUnit(unitId) {
   currentUnit = unitId;
   unitNameEl.textContent = `${SUBUNIT_TITLES[unitId] || unitId}   /   ${UNIT_TITLES[unitId.split("_")[0]] || unitId.split("_")[0]}`;
-  currentWords = await fetch(`${API_BASE}/words/${unitId}`).then((r) => r.json());
+  currentWords = await apiFetch(`/words/${unitId}`).then((r) => r.json());
   renderWordGrid();
   if (highlightWord) {
     setTimeout(() => {
@@ -303,7 +316,7 @@ async function commitWord(word, field, value) {
     payload.memorized_past = true;
   }
 
-  const res = await fetch(`${API_BASE}/update_word`, {
+  const res = await apiFetch(`/update_word`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -404,7 +417,7 @@ async function commitNotes(entry, notes) {
     }))
     .filter((note) => note.text.trim());
   const payload = { unit: entry.unit || currentUnit, word: entry.word, notes: notesToLegacyText(cleanNotes), notes_v2: cleanNotes };
-  const res = await fetch(`${API_BASE}/update_note`, {
+  const res = await apiFetch(`/update_note`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -422,7 +435,7 @@ async function addNoteToWord(unit, word, extraNote, links = []) {
   const target = allWords.find((x) => x.unit === unit && x.word === word);
   const targetEntry = target || { unit, word, notes: "", notes_v2: [] };
   const nextNotes = [...getNotes(targetEntry), createNoteObject(targetEntry, extraNote, getNotes(targetEntry).length, links)];
-  const res = await fetch(`${API_BASE}/update_note`, {
+  const res = await apiFetch(`/update_note`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ unit, word, notes: notesToLegacyText(nextNotes), notes_v2: nextNotes }),
@@ -438,7 +451,7 @@ async function saveNoteAsExample(entry, note) {
   if (!text) return alert("笔记为空，不能添加为例句");
   const examples = [...(entry.example_sentences || [])];
   if (!examples.includes(text)) examples.unshift(text);
-  const res = await fetch(`${API_BASE}/enrich_word`, {
+  const res = await apiFetch(`/enrich_word`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -461,7 +474,7 @@ async function saveNoteAsExample(entry, note) {
 }
 
 async function updateCustomExamples(entry, examples) {
-  const res = await fetch(`${API_BASE}/enrich_word`, {
+  const res = await apiFetch(`/enrich_word`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -648,7 +661,7 @@ async function enrichWord(entry) {
   const definitions = data.senses.map((s) => `${s.pos}: ${s.definition}`);
   const examples = data.senses.flatMap((s) => s.examples || []).slice(0, 2);
 
-  const enrichRes = await fetch(`${API_BASE}/enrich_word`, {
+  const enrichRes = await apiFetch(`/enrich_word`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -696,6 +709,26 @@ function renderWordGrid() {
     const trans = document.createElement("p");
     trans.className = "translation";
     trans.textContent = entry.translation || "-";
+
+    const ecdictMeta = document.createElement("div");
+    ecdictMeta.className = "ecdict-meta";
+    if (entry.phonetic) {
+      const phonetic = document.createElement("span");
+      phonetic.className = "phonetic-badge";
+      phonetic.textContent = `/${entry.phonetic}/`;
+      ecdictMeta.appendChild(phonetic);
+    }
+    const ecdictTags = String(entry.tags || "")
+      .split(/[,\s;|]+/)
+      .map((tag) => tag.trim())
+      .filter(Boolean)
+      .slice(0, 4);
+    ecdictTags.forEach((tag) => {
+      const chip = document.createElement("span");
+      chip.className = "ecdict-tag";
+      chip.textContent = tag;
+      ecdictMeta.appendChild(chip);
+    });
 
     const tags = document.createElement("div");
     tags.className = "tags";
@@ -803,7 +836,9 @@ function renderWordGrid() {
     chips.className = "chips";
     chips.textContent = `复习次数 ${entry.status?.review_count ?? 0} ${entry.status?.last_reviewed ? `| 最近 ${entry.status.last_reviewed}` : ''}`;
 
-    const cardParts = [meta, tags, trans, exampleBlock, checkbox, chips, details];
+    const cardParts = [meta, tags, trans];
+    if (ecdictMeta.childElementCount) cardParts.push(ecdictMeta);
+    cardParts.push(exampleBlock, checkbox, chips, details);
     card.append(...cardParts);
     wordGridEl.appendChild(card);
   });
@@ -906,7 +941,7 @@ async function showDashboard() {
   wordGridEl.style.display = "none";
   menuBar.style.display = "flex";
   backToWords.style.display = "inline-block";
-  const res = await fetch(`${API_BASE}/dashboard`);
+  const res = await apiFetch(`/dashboard`);
   if (!res.ok) return;
   const data = await res.json();
   dashboardCardsEl.innerHTML = `

@@ -90,6 +90,11 @@ body.dark .word-card.done-today { border-color: rgba(74,222,128,.75); box-shadow
 .meta h3 { margin: 0; font-size: 1.35rem; letter-spacing: -0.04em; }
 .icon-btn { width: 34px; height: 34px; border-radius: 12px; border: 0; cursor: pointer; background: #111827; color: white; display: grid; place-items: center; }
 .translation { color: var(--text); font-size: 1rem; line-height: 1.55; margin: 10px 0; }
+.ecdict-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: -2px 0 10px; }
+.phonetic-badge { color: var(--primary); background: var(--primary-soft); border: 1px solid rgba(96,165,250,.28); border-radius: 999px; padding: 4px 9px; font-size: .82rem; font-weight: 800; letter-spacing: .01em; }
+.ecdict-tag { color: var(--muted); background: var(--card-soft); border: 1px solid var(--border); border-radius: 999px; padding: 3px 8px; font-size: .72rem; font-weight: 700; }
+body.dark .phonetic-badge { border-color: rgba(96,165,250,.38); }
+body.dark .ecdict-tag { color: #c4cfdd; background: rgba(255,255,255,.04); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .tags span { background: var(--primary-soft); color: var(--primary); border-radius: 999px; padding: 4px 8px; font-size: .75rem; }
 .checkbox-group { display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; }

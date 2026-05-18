@@ -2,7 +2,9 @@
 
 VocabOS 是一个本地运行的英语词汇学习系统，当前版本包含 Excel/JSON 词库数据、FastAPI 后端、原生 HTML/CSS/JS 前端 SPA、词卡学习、打卡、笔记、默认例句、自定义例句、搜索、仪表盘和黑暗模式。
 
-> 给后续维护 AI 的重点：这是一个**无构建步骤、无前端框架、以 JSON 文件作为数据库**的轻量项目。修改功能时优先保持简单，不要引入复杂框架，除非用户明确要求。
+项目已开始 Phase 1 数据库化重构：新增 Async SQLite + SQLAlchemy 2.0 AsyncSession 领域模型和导入流水线，用于未来接入 ECDICT、电影台词例句、AI 自上而下学习、FSRS 复习与多用户进度。当前旧 API 仍读写 JSON，数据库层作为新底座并行存在。
+
+> 给后续维护 AI 的重点：这是一个**无构建步骤、无前端框架、旧功能仍兼容 JSON、新功能逐步迁移到 SQLAlchemy 数据层**的项目。不要继续在 JSON 架构上堆复杂功能，新增长期能力优先围绕 ORM 模型和 data_pipeline 设计。
 
 ---
 
@@ -24,8 +26,13 @@ vocab_os/
 ├── backend/
 │   ├── __init__.py
 │   ├── app.py                     # FastAPI API、搜索、默认例句、dashboard
+│   ├── core/                      # 新数据库配置、Session、建表入口
+│   ├── orm/                       # SQLAlchemy 领域模型
 │   ├── db.py                      # JSON 文件读写、状态/笔记/例句落盘
 │   └── models.py                  # Pydantic 请求/响应模型
+├── data_pipeline/
+│   ├── import_legacy_json.py       # 旧 Unit_*.json -> SQLite
+│   └── import_ecdict.py            # ECDICT 精准补全已有学习词
 ├── frontend/
 │   ├── index.html                 # SPA 页面结构
 │   ├── app.js                     # 前端交互、搜索、词卡、笔记菜单、黑暗模式
@@ -46,7 +53,7 @@ vocab_os/
 基础依赖：
 
 ```bash
-pip install pandas openpyxl fastapi uvicorn
+pip install -r requirements.txt
 ```
 
 可选依赖：
@@ -115,6 +122,8 @@ python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 
 ## 4. 数据模型
 
+### 4.1 当前兼容 JSON 模型
+
 每个单词存在 `data/Unit_x_Suby.json` 中，基本结构：
 
 ```json
@@ -152,6 +161,53 @@ python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 - `example_sentences`：用户自定义例句，通常由笔记转成，可以删除/转回笔记/发音。
 - `default_example`：系统默认例句，后端动态生成或未来从题库映射；**不写入 JSON，前端不可删除**。
 - `definitions` / `pos` / `chinese`：可通过 `/api/enrich_word` 写入，但当前前端已经移除了“补全释义/例句”按钮。
+
+### 4.2 Phase 1 SQLAlchemy 领域模型
+
+新数据库默认路径：
+
+```text
+vocab_os/db/vocabos.sqlite3
+```
+
+核心表：
+
+```text
+words                 # 单词本体：word/phonetic/word_audio_path/translation/definition/source
+word_forms            # 词形变化
+clusters              # Unit/SubUnit/语义主题，可嵌套
+word_clusters         # 单词与聚类多对多关系
+examples              # default/user/movie/ai 例句统一资源
+notes                 # 独立笔记，可关联例句或源笔记
+users                 # 本地默认用户与未来多用户
+user_word_progress    # 用户-单词学习进度，含 FSRS state/lapses/stability/difficulty/retrievability
+ai_sessions           # AI 学习会话
+ai_messages           # AI 对话消息
+```
+
+数据库初始化与旧数据导入：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+python -m backend.core.init_db
+python -m data_pipeline.import_legacy_json
+```
+
+导入 ECDICT 时，只补全已经存在于学习词库中的单词，避免把 300 万级词典全量塞进学习库：
+
+```bash
+python -m data_pipeline.import_ecdict /path/to/ecdict.csv
+```
+
+健康检查：
+
+```http
+GET /api/db_health
+```
+
+`/api/db_health` 使用异步 SQLAlchemy session，并返回 `driver=async_sqlalchemy` 与 FSRS 字段列表。
+
+Phase 1 约束：现有前端仍调用 JSON 兼容 API。不要贸然把 `/api/words/{unit_id}` 等接口切到数据库，下一阶段需要先补服务层与响应转换层。
 
 ---
 
@@ -225,6 +281,7 @@ POST /api/enrich_word
 GET /api/dict/{word}
 GET /api/search/{query}?limit=12
 GET /api/relations
+GET /api/db_health
 ```
 
 搜索逻辑在 `backend/app.py`：

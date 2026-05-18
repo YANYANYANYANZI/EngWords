@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pandas
+openpyxl
+sqlalchemy>=2.0
+aiosqlite
+greenlet
+pydantic

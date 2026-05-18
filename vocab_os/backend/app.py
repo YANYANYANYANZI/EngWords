@@ -5,8 +5,11 @@ from datetime import datetime
 from functools import lru_cache
 import difflib
 import re
+from sqlalchemy import and_, delete, func, select
+from sqlalchemy.orm import selectinload
 
 from . import db
+from .core.database import AsyncSessionLocal
 from .models import (
     UnitInfo,
     WordEntry,
@@ -15,6 +18,7 @@ from .models import (
     EnrichWordRequest,
     UnitSummaryRequest,
 )
+from .orm import Cluster, Example, Note, User, UserWordProgress, Word, WordCluster
 
 app = FastAPI(title="VocabOS API")
 
@@ -25,6 +29,31 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+DEFAULT_USER_NAME = "local"
+
+
+@app.get("/api/db_health")
+async def get_db_health():
+    """Lightweight async health check for the new SQLAlchemy/SQLite data layer.
+
+    Phase 1 keeps the old JSON-backed APIs unchanged; this endpoint only reports
+    whether the new database is reachable and how much legacy data was imported.
+    """
+    try:
+        async with AsyncSessionLocal() as session:
+            return {
+                "ok": True,
+                "driver": "async_sqlalchemy",
+                "fsrs_fields": ["state", "lapses", "stability", "difficulty", "retrievability"],
+                "words": await session.scalar(select(func.count()).select_from(Word)) or 0,
+                "clusters": await session.scalar(select(func.count()).select_from(Cluster)) or 0,
+                "word_cluster_links": await session.scalar(select(func.count()).select_from(WordCluster)) or 0,
+                "progress_rows": await session.scalar(select(func.count()).select_from(UserWordProgress)) or 0,
+            }
+    except Exception as ex:
+        return {"ok": False, "error": str(ex)}
 
 
 def _norm(text: str) -> str:
@@ -135,6 +164,221 @@ def _with_default_example(entry: Dict) -> Dict:
     item = entry.copy()
     item["default_example"] = _default_example(item.get("word", ""), item.get("translation", ""))
     return item
+
+
+def _dt_to_iso(value):
+    return value.isoformat() + "Z" if value else None
+
+
+async def _get_default_user_id(session) -> int:
+    user = await session.scalar(
+        select(User).where((User.is_default.is_(True)) | (User.name == DEFAULT_USER_NAME)).limit(1)
+    )
+    if user:
+        return user.id
+    user = User(name=DEFAULT_USER_NAME, is_default=True)
+    session.add(user)
+    await session.flush()
+    return user.id
+
+
+def _word_to_frontend_entry(word: Word, unit_id: str, progress: UserWordProgress | None = None) -> Dict:
+    user_examples = [example.text for example in word.examples if example.source_type != "default"]
+    notes = [{
+        "id": f"db_note_{note.id}",
+        "text": note.text,
+        "links": note.extra.get("links", []) if isinstance(note.extra, dict) else [],
+        "created_at": _dt_to_iso(note.created_at),
+        "updated_at": _dt_to_iso(note.updated_at),
+    } for note in word.notes]
+    status = {
+        "memorized_past": bool(progress.memorized_past) if progress else False,
+        "memorized_today": bool(progress.memorized_today) if progress else False,
+        "last_reviewed": _dt_to_iso(progress.last_reviewed_at) if progress else None,
+        "review_count": progress.review_count if progress else 0,
+    }
+    definitions = [line.strip() for line in (word.definition or "").splitlines() if line.strip()]
+    return _with_default_example({
+        "word": word.word,
+        "translation": word.translation or "",
+        "unit": unit_id,
+        "status": status,
+        "notes": "\n".join(note["text"] for note in notes if note.get("text")),
+        "notes_v2": notes,
+        "phonetic": word.phonetic or "",
+        "tags": word.tags or "",
+        "pos": word.pos or "",
+        "definitions": definitions,
+        "example_sentences": user_examples,
+        "chinese": word.translation or "",
+    })
+
+
+async def _get_db_word_entry(session, unit_id: str, word_text: str) -> Dict:
+    user_id = await _get_default_user_id(session)
+    stmt = (
+        select(Word, UserWordProgress)
+        .join(WordCluster, WordCluster.word_id == Word.id)
+        .join(Cluster, Cluster.id == WordCluster.cluster_id)
+        .outerjoin(
+            UserWordProgress,
+            and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+        )
+        .options(selectinload(Word.examples), selectinload(Word.notes))
+        .where(Cluster.code == unit_id, Word.normalized == _norm(word_text))
+        .limit(1)
+    )
+    row = (await session.execute(stmt)).first()
+    if not row:
+        raise HTTPException(status_code=404, detail="word not found")
+    word, progress = row
+    return _word_to_frontend_entry(word, unit_id, progress)
+
+
+@app.get("/api/db/units", response_model=List[UnitInfo])
+async def get_db_units():
+    """Read units from the new async SQLAlchemy data layer, preserving the old API shape."""
+    async with AsyncSessionLocal() as session:
+        rows = await session.execute(
+            select(Cluster, func.count(WordCluster.id).label("word_count"))
+            .outerjoin(WordCluster, WordCluster.cluster_id == Cluster.id)
+            .group_by(Cluster.id)
+            .order_by(Cluster.code)
+        )
+        return [{
+            "unit": cluster.code,
+            "count": count,
+            "updated_at": _dt_to_iso(cluster.updated_at),
+            "title": cluster.name,
+        } for cluster, count in rows]
+
+
+@app.get("/api/db/words/{unit_id}", response_model=List[WordEntry])
+async def get_db_unit_words(unit_id: str):
+    """Read one unit from SQLite while returning the frontend-compatible word shape."""
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        stmt = (
+            select(Word, UserWordProgress)
+            .join(WordCluster, WordCluster.word_id == Word.id)
+            .join(Cluster, Cluster.id == WordCluster.cluster_id)
+            .outerjoin(
+                UserWordProgress,
+                and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+            )
+            .options(selectinload(Word.examples), selectinload(Word.notes))
+            .where(Cluster.code == unit_id)
+            .order_by(WordCluster.position, Word.word)
+        )
+        rows = (await session.execute(stmt)).all()
+        if not rows:
+            raise HTTPException(status_code=404, detail="unit not found")
+        return [_word_to_frontend_entry(word, unit_id, progress) for word, progress in rows]
+
+
+@app.get("/api/db/all_words")
+async def get_db_all_words():
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        stmt = (
+            select(Word, Cluster.code, UserWordProgress)
+            .join(WordCluster, WordCluster.word_id == Word.id)
+            .join(Cluster, Cluster.id == WordCluster.cluster_id)
+            .outerjoin(
+                UserWordProgress,
+                and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+            )
+            .options(selectinload(Word.examples), selectinload(Word.notes))
+            .order_by(Cluster.code, WordCluster.position, Word.word)
+        )
+        rows = (await session.execute(stmt)).all()
+        return [_word_to_frontend_entry(word, unit_id, progress) for word, unit_id, progress in rows]
+
+
+@app.get("/api/db/dashboard")
+async def get_db_dashboard():
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        total_words = await session.scalar(select(func.count()).select_from(Word)) or 0
+        progress_rows = (await session.execute(select(UserWordProgress).where(UserWordProgress.user_id == user_id))).scalars().all()
+        reviewed_today = sum(1 for row in progress_rows if row.memorized_today)
+        total_reviews = sum(row.review_count for row in progress_rows)
+        past_memorized = sum(1 for row in progress_rows if row.memorized_past)
+        review_rate = (reviewed_today / total_words * 100) if total_words else 0
+        today_goal = 50
+        return {
+            "total_words": total_words,
+            "reviewed_today": reviewed_today,
+            "total_reviews": total_reviews,
+            "past_memorized": past_memorized,
+            "review_rate": review_rate,
+            "today_goal": today_goal,
+            "progress": min(100, reviewed_today / today_goal * 100),
+            "forget_curve": [1, 0.8, 0.6, 0.4, 0.2],
+            "source": "async_sqlalchemy",
+        }
+
+
+@app.post("/api/db/update_word", response_model=WordEntry)
+async def update_db_word(req: UpdateWordRequest):
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        word = await session.scalar(select(Word).where(Word.normalized == _norm(req.word)).limit(1))
+        if not word:
+            raise HTTPException(status_code=404, detail="word not found")
+        progress = await session.scalar(select(UserWordProgress).where(UserWordProgress.user_id == user_id, UserWordProgress.word_id == word.id))
+        if not progress:
+            progress = UserWordProgress(user_id=user_id, word_id=word.id)
+            session.add(progress)
+        if req.memorized_past is not None:
+            progress.memorized_past = bool(req.memorized_past)
+        if req.memorized_today is not None:
+            was_reviewed_today = progress.memorized_today
+            progress.memorized_today = bool(req.memorized_today)
+            if req.memorized_today:
+                progress.memorized_past = True
+                if not was_reviewed_today:
+                    progress.review_count += 1
+                progress.state = 2
+                progress.status = "review"
+                progress.last_reviewed_at = datetime.utcnow()
+        await session.commit()
+        return await _get_db_word_entry(session, req.unit, req.word)
+
+
+@app.post("/api/db/update_note", response_model=WordEntry)
+async def update_db_note(req: UpdateNoteRequest):
+    async with AsyncSessionLocal() as session:
+        word = await session.scalar(select(Word).where(Word.normalized == _norm(req.word)).limit(1))
+        if not word:
+            raise HTTPException(status_code=404, detail="word not found")
+        await session.execute(delete(Note).where(Note.word_id == word.id))
+        for note in req.notes_v2 or []:
+            text = str(note.get("text", "")).strip()
+            if text:
+                session.add(Note(word_id=word.id, text=text, extra={"links": note.get("links", [])}))
+        await session.commit()
+        return await _get_db_word_entry(session, req.unit, req.word)
+
+
+@app.post("/api/db/enrich_word", response_model=WordEntry)
+async def enrich_db_word(req: EnrichWordRequest):
+    async with AsyncSessionLocal() as session:
+        word = await session.scalar(select(Word).where(Word.normalized == _norm(req.word)).limit(1))
+        if not word:
+            raise HTTPException(status_code=404, detail="word not found")
+        word.pos = req.pos or word.pos
+        if req.definitions is not None:
+            word.definition = "\n".join(req.definitions)
+        if req.chinese is not None:
+            word.translation = req.chinese or word.translation
+        await session.execute(delete(Example).where(Example.word_id == word.id, Example.source_type == "user"))
+        for sentence in req.example_sentences or []:
+            text = sentence.strip()
+            if text:
+                session.add(Example(word_id=word.id, text=text, source_type="user", source_name="frontend"))
+        await session.commit()
+        return await _get_db_word_entry(session, req.unit, req.word)
 
 
 @app.get("/api/units", response_model=List[UnitInfo])

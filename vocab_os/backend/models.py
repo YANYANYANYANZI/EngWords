@@ -16,6 +16,8 @@ class WordEntry(BaseModel):
     status: WordStatus
     notes: str
     notes_v2: Optional[List[Dict[str, Any]]] = None
+    phonetic: Optional[str] = None
+    tags: Optional[str] = None
     pos: Optional[str] = None
     definitions: Optional[List[str]] = None
     example_sentences: Optional[List[str]] = None
