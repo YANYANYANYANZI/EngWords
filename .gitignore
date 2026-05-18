@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Python caches / virtual environments
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+env/
+
+# IDE / editor local settings
+.idea/
+.vscode/
+
+# Environment / secrets
+.env
+.env.*
+
+# Node / frontend dependencies if added later
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# Runtime process files
+*.pid
+.runlogs/

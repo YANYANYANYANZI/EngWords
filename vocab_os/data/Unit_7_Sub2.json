@@ -1,0 +1,722 @@
+[
+  {
+    "word": "bamboo",
+    "translation": "n.竹",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "banana",
+    "translation": "n.香蕉",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "black",
+    "translation": "adj.黑色的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "blue",
+    "translation": "adj.蓝色的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "brand",
+    "translation": "n.商标;牌子",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "brown",
+    "translation": "n./adj.棕色（的）",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cactus",
+    "translation": "n.仙人掌",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "color",
+    "translation": "n.颜色",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "flavor",
+    "translation": "n.味;风味",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "flower",
+    "translation": "n.花;开花",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "fruit",
+    "translation": "n.水果;果实",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ginger",
+    "translation": "n.姜;姜黄色",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "grass",
+    "translation": "n.草;草地",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "green",
+    "translation": "adj.绿色的;生的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "grey",
+    "translation": "n./adj.灰色（的）",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ivory",
+    "translation": "n.象牙;牙白色",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "jelly",
+    "translation": "n.果冻;胶状物",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "leaf",
+    "translation": "n.叶子;一页",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "lemon",
+    "translation": "n.柠檬;柠檬树",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "melon",
+    "translation": "n.瓜;甜瓜",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "mixed",
+    "translation": "adj.混合的;杂种的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "olive",
+    "translation": "n.橄榄;橄榄树",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "orange",
+    "translation": "n.橙子;橙色",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pear",
+    "translation": "n.梨;梨树",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pepper",
+    "translation": "n.胡椒;辣椒粉",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pine",
+    "translation": "n.松树;松木",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pineapple",
+    "translation": "n.菠萝",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pink",
+    "translation": "n./adj.粉红色（的）",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "plant",
+    "translation": "n.植物;工厂",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "polar",
+    "translation": "adj.极地的;极性的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "purple",
+    "translation": "adj.紫色的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "raisin",
+    "translation": "n.葡萄干",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "raw",
+    "translation": "adj.生的;未加工的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "red",
+    "translation": "n./adj.红色（的）",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ripe",
+    "translation": "adj.熟的;成熟的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ripen",
+    "translation": "v.成熟;变熟",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "shrub",
+    "translation": "n.灌木;灌木丛",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sour",
+    "translation": "adj.酸的;脾气坏的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sourness",
+    "translation": "n.酸味;痛苦",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "spice",
+    "translation": "n.香料;调味品",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "spicy",
+    "translation": "adj.有香料的;加香料的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sun",
+    "translation": "n.太阳;阳光",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "taste",
+    "translation": "n.味道",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "tomato",
+    "translation": "n.番茄",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "walnut",
+    "translation": "n.胡桃;胡桃木",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "white",
+    "translation": "n.白色",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "whiten",
+    "translation": "v.漂白;变白",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "yellow",
+    "translation": "adj.黄色的",
+    "unit": "Unit_7_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]

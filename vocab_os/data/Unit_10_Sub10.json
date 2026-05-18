@@ -1,0 +1,872 @@
+[
+  {
+    "word": "accent",
+    "translation": "n.口音，音调",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "alarm",
+    "translation": "n.警报;闹钟",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "band",
+    "translation": "n.乐队;带;帮",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bell",
+    "translation": "n.钟;铃",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "buzz",
+    "translation": "v.发嗡嗡声;嗡嗡叫",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "chorus",
+    "translation": "n.合唱;合唱曲",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "consonant",
+    "translation": "n.辅音;辅音字母",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "deaf",
+    "translation": "adj.聋的;不愿听的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "drown",
+    "translation": "v.淹没;溺死",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "drum",
+    "translation": "n.鼓;桶",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "echo",
+    "translation": "n.回声;反响",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "horn",
+    "translation": "n.角;号角",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "jam",
+    "translation": "n.果酱;拥挤",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "kiss",
+    "translation": "n./v.吻;轻触",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "lick",
+    "translation": "v.舔;卷过",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "melody",
+    "translation": "n.旋律;曲调",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "mingle",
+    "translation": "v.混合;交往",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "moan",
+    "translation": "n.呻吟声",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "murmur",
+    "translation": "v.低语;低声抱怨",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "musical",
+    "translation": "adj.音乐的;和谐的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "percussion",
+    "translation": "n.敲击;打击乐器",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "phonetic",
+    "translation": "adj.语音的;音标的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pop",
+    "translation": "adj.流行的;通俗的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pronounce",
+    "translation": "v.发音;宣布",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pronunciation",
+    "translation": "n.发音;发音方法",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rap",
+    "translation": "n.轻敲;责骂",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rattle",
+    "translation": "n.嘎嘎声",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rhyme",
+    "translation": "n.韵;押韵",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "riff",
+    "translation": "n.裂缝;冲突",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "roar",
+    "translation": "v.吼叫;轰鸣",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rock",
+    "translation": "n.岩石;摇滚乐",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "scream",
+    "translation": "n.尖叫声",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "shriek",
+    "translation": "n.尖叫声",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sing",
+    "translation": "v.唱;歌唱",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "singly",
+    "translation": "adv.单独地;各自地",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "singsong",
+    "translation": "n.轻快地唱歌;悦耳的声音",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sip",
+    "translation": "v.啜饮;尝",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "slang",
+    "translation": "n.俚语;行话",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "snare",
+    "translation": "n.陷阱;罗网",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "song",
+    "translation": "n.歌唱;歌曲",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sound",
+    "translation": "adj.健康的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "spoke",
+    "translation": "n.轮辐;辐条",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "squeak",
+    "translation": "v.吱吱响",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "squeaky",
+    "translation": "adj.吱吱响的;不稳定的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "squeal",
+    "translation": "v.尖叫;告密",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "squelch",
+    "translation": "v.压制;镇压",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "stutter",
+    "translation": "v.口吃",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "supersonic",
+    "translation": "adj.超音速的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "thrash",
+    "translation": "v.鞭打;打败",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "thump",
+    "translation": "v.重击;敲击",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ton",
+    "translation": "n.吨",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "trumpet",
+    "translation": "n.小号;喇叭",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "vocal",
+    "translation": "adj.声音的;歌唱的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "voiceless",
+    "translation": "adj.无声的;无发言权的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "vowel",
+    "translation": "n.元音;元音字母",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "wavy",
+    "translation": "adj.波浪的;波动的",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "whisper",
+    "translation": "v.耳语;低语",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "yell",
+    "translation": "v.大叫",
+    "unit": "Unit_10_Sub10",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]

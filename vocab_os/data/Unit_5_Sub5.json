@@ -1,0 +1,587 @@
+[
+  {
+    "word": "afternoon",
+    "translation": "n.下午",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "annual",
+    "translation": "adj.每年的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "birthday",
+    "translation": "n.生日",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "celebrate",
+    "translation": "v.庆祝;颂扬",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "celebration",
+    "translation": "n.庆祝;庆典",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "daily",
+    "translation": "adj.每日的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "date",
+    "translation": "n.日期;约会",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "day",
+    "translation": "n.白天;日子",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "deadline",
+    "translation": "n.最终期限",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "December",
+    "translation": "n.十二月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "February",
+    "translation": "n.二月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "holiday",
+    "translation": "n.假日;节日",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hour",
+    "translation": "n.小时;时间",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "January",
+    "translation": "n.一月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "July",
+    "translation": "n.七月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "June",
+    "translation": "n.六月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "latest",
+    "translation": "adj.最新的;最近的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "march",
+    "translation": "n.行进",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "may",
+    "translation": "modal",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "midday",
+    "translation": "n.中午;正午",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "midnight",
+    "translation": "n.午夜;子夜",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "monthly",
+    "translation": "adj.每月的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "november",
+    "translation": "n.十一月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "October",
+    "translation": "n.十月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "overnight",
+    "translation": "adj.通宵的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "overtime",
+    "translation": "adj.超时的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "schedule",
+    "translation": "n.时间表",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "season",
+    "translation": "n.季节",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "September",
+    "translation": "n.九月",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "tomorrow",
+    "translation": "n.明天",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "tuesday",
+    "translation": "n.星期二",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "up-to-date",
+    "translation": "adj.最新的;现代的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "wed",
+    "translation": "v.结婚;娶",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "Wednesday",
+    "translation": "n.星期三",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "week",
+    "translation": "n.星期;周",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "weekday",
+    "translation": "n.平日;工作日",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "weekly",
+    "translation": "adj.每周的",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "year",
+    "translation": "n.年",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "yearn",
+    "translation": "v.渴望;向往",
+    "unit": "Unit_5_Sub5",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]

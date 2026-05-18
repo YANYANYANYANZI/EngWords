@@ -1,0 +1,722 @@
+[
+  {
+    "word": "argue",
+    "translation": "v.争论，争辩",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "argument",
+    "translation": "n.争论，辩论",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "assumption",
+    "translation": "n.假定;承担",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "conclude",
+    "translation": "v.结束;推断",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "conclusion",
+    "translation": "n.结论;结束",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "consequent",
+    "translation": "adj.随之发生的;必然的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "contradict",
+    "translation": "v.反驳;相矛盾",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "contradiction",
+    "translation": "n.反驳;矛盾",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "criterion",
+    "translation": "n.标准;准则",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "disagreement",
+    "translation": "n.不一致;争论",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "entail",
+    "translation": "v.使成为必需;遗传",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "equal",
+    "translation": "adj.相等的;平等的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "equality",
+    "translation": "n.平等;同等",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "equivalent",
+    "translation": "adj.相等的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "erroneous",
+    "translation": "adj.错误的;不正确的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "evidence",
+    "translation": "n.证据;迹象",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "exception",
+    "translation": "n.例外;异议",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "fail",
+    "translation": "v.失败;不及格",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "failure",
+    "translation": "n.失败;失败的人",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hypothesis",
+    "translation": "n.假设;前提",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hypothetical",
+    "translation": "adj.假设的;假定的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "idiom",
+    "translation": "n.成语;习语",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "implication",
+    "translation": "n.含义;暗示",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "implies",
+    "translation": "v.暗示;意味着",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "imply",
+    "translation": "v.暗示;意味",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "inference",
+    "translation": "n.推断;推论",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "logic",
+    "translation": "n.逻辑;逻辑学",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "logical",
+    "translation": "adj.逻辑的;合理的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "misunderstanding",
+    "translation": "n.误解;误会",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "phrase",
+    "translation": "n.短语;习惯用语",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "premise",
+    "translation": "n.前提;假定",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "proof",
+    "translation": "n.证据;证明",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "proposition",
+    "translation": "n.主张;命题",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "prove",
+    "translation": "v.证明;展现",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "proverb",
+    "translation": "n.谚语;格言",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "proverbial",
+    "translation": "adj.谚语的;众所周知的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "quotation",
+    "translation": "n.引用;报价",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "quote",
+    "translation": "v.引用",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "reasoning",
+    "translation": "n.推理;理由",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "remark",
+    "translation": "n.评论",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rule",
+    "translation": "n.规则",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "slogan",
+    "translation": "n.标语;口号",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "statement",
+    "translation": "n.声明;陈述",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "subjunctive",
+    "translation": "n.虚拟语气",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "taut",
+    "translation": "adj.绷紧的;拉紧的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "theorem",
+    "translation": "n.定理;原理",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "trivial",
+    "translation": "adj.微不足道的;琐细的",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "verse",
+    "translation": "n.诗;韵文",
+    "unit": "Unit_8_Sub1",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]

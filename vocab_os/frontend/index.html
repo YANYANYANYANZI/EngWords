@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VocabOS</title>
+  <link rel="stylesheet" href="app.css?v=20260518-12" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">V</div>
+        <div>
+          <h1>VocabOS</h1>
+          <p>智能词汇学习台</p>
+        </div>
+      </div>
+      <div class="search-container">
+        <input id="wordSearch" placeholder="查找单词 / 中文释义" />
+        <button id="searchBtn" class="search-icon" title="查找">⌘</button>
+      </div>
+      <div class="search-container">
+        <input id="semanticSearch" placeholder="语义 / 近义 / 反义 / 模糊搜索" />
+        <button id="semanticSearchBtn" class="search-icon" title="语义搜索">↵</button>
+      </div>
+      <div id="searchResults"></div>
+      <ul id="unitList"></ul>
+    </aside>
+    <main class="content">
+      <div class="menu-bar" id="menuBar">
+        <button id="dashboardBtn">📊 学习仪表盘</button>
+        <button id="backToWords" style="display:none;">← 返回卡片</button>
+        <button id="searchBackBtn" style="display:none;">← 返回上一级</button>
+        <button id="themeToggle">🌙 黑暗模式</button>
+      </div>
+      <div id="dashboard" class="dashboard" style="display:none;">
+        <div class="dashboard-header">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>学习仪表盘</h2>
+          </div>
+          <span class="soft-badge">实时统计</span>
+        </div>
+        <div id="dashboardCards" class="dashboard-cards"></div>
+        <canvas id="chartCanvas"></canvas>
+      </div>
+      <div class="topbar">
+        <h2 id="unitName">请选择一个子单元</h2>
+        <div id="stats"></div>
+      </div>
+      <div class="summary-panel">
+        <div class="summary-header">
+          <h3>单元概述（可编辑，失焦保存）</h3>
+          <button id="refreshSummary">刷新</button>
+        </div>
+        <textarea id="unitSummary" placeholder="暂无内容，点击编辑"></textarea>
+      </div>
+      <div id="wordGrid" class="word-grid"></div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js?v=20260518-12"></script>
+</body>
+</html>

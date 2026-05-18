@@ -1,0 +1,1022 @@
+[
+  {
+    "word": "animal",
+    "translation": "n.动物",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bark",
+    "translation": "n.树皮;狗叫",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bear",
+    "translation": "n.熊",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bird",
+    "translation": "n.鸟;禽",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bite",
+    "translation": "v.咬;剌痛",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "breed",
+    "translation": "v.繁殖;饲养",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "bull",
+    "translation": "n.公牛;雄的",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cage",
+    "translation": "n.笼子",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cat",
+    "translation": "n.猫",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cater",
+    "translation": "v.迎合;满足",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cattle",
+    "translation": "n.牛;牲畜",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cock",
+    "translation": "n.公鸡;雄鸡",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "collar",
+    "translation": "n.衣领;颈圈",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "cow",
+    "translation": "n.母牛;奶牛",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "crow",
+    "translation": "n.乌鸦;鸡冠",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "deer",
+    "translation": "n.鹿",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "dog",
+    "translation": "n.狗;狗项圈",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "duck",
+    "translation": "n.鸭;鸭肉",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "eagle",
+    "translation": "n.鹰",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "feather",
+    "translation": "n.羽毛;翎毛",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "fox",
+    "translation": "n.狐狸;狡猾的人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "fur",
+    "translation": "n.软毛;毛皮",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "goat",
+    "translation": "n.山羊;山羊皮",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "goose",
+    "translation": "n.鹅;鹅肉",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hawk",
+    "translation": "n.鹰;鹰派成员",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hen",
+    "translation": "n.母鸡",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "horse",
+    "translation": "n.马;马科动物",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hound",
+    "translation": "n.猎狗;卑鄙的人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hunt",
+    "translation": "v.打猎;搜寻",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "hunter",
+    "translation": "n.猎人;猎犬",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "lion",
+    "translation": "n.狮子;勇猛的人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "mammal",
+    "translation": "n.哺乳动物",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "monkey",
+    "translation": "n.猴子",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "noodle",
+    "translation": "n.面条;笨蛋",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "owl",
+    "translation": "n.猫头鹰",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "panda",
+    "translation": "n.熊猫",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "panting",
+    "translation": "adj.喘息的;气喘吁吁的",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "paw",
+    "translation": "n.爪子",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "peanut",
+    "translation": "n.花生;花生豆",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "peck",
+    "translation": "v.啄;轻啄",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "perch",
+    "translation": "n.鲈鱼;栖息处",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pet",
+    "translation": "n.宠物;宠爱的人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pig",
+    "translation": "n.猪",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pigeon",
+    "translation": "n.鸽子;传书鸽",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pony",
+    "translation": "n.小马;矮种马",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "pup",
+    "translation": "n.小狗;幼犬",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "quiver",
+    "translation": "n.颤抖;箭袋",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rabbit",
+    "translation": "n.兔子;野兔",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rancher",
+    "translation": "n.牧场主;农场主",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rat",
+    "translation": "n.老鼠;叛徒",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rooster",
+    "translation": "n.公鸡",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "seagull",
+    "translation": "n.海鸥",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "shaggy",
+    "translation": "adj.毛发粗浓的;蓬松的",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sheep",
+    "translation": "n.羊;绵羊",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "skunk",
+    "translation": "n.臭鼬;黄鼠狼",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "snoop",
+    "translation": "v.窥探;侦察",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "snowy",
+    "translation": "adj.雪的;下雪的",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sparrow",
+    "translation": "n.麻雀",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "squirrel",
+    "translation": "n.松鼠",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "stew",
+    "translation": "n.炖肉;困境",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "swan",
+    "translation": "n.天鹅",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "tick",
+    "translation": "n.滴答声;勾号",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "tiger",
+    "translation": "n.老虎;凶暴的人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "veterinary",
+    "translation": "adj.兽医的",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "watchdog",
+    "translation": "n.看门狗;监察人",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "weasel",
+    "translation": "n.黄鼠狼;鼬",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "wicker",
+    "translation": "n.柳条;编织篮",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "wolf",
+    "translation": "n.狼",
+    "unit": "Unit_10_Sub2",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]

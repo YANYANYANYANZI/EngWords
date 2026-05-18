@@ -1,0 +1,1311 @@
+[
+  {
+    "word": "aid",
+    "translation": "n.帮助;援助",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": true,
+      "memorized_today": true,
+      "last_reviewed": "2026-05-18T14:28:05.026639Z",
+      "review_count": 2,
+      "last_today": "2026-05-18"
+    },
+    "notes": "",
+    "pos": "n",
+    "definitions": [
+      "n: n.帮助;援助"
+    ],
+    "example_sentences": [
+      "visual aids in teaching",
+      "he gave me an assist with the housework"
+    ],
+    "chinese": "n.帮助;援助"
+  },
+  {
+    "word": "army",
+    "translation": "n.军队",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": true,
+      "memorized_today": true,
+      "last_reviewed": "2026-05-18T14:28:09.992266Z",
+      "review_count": 2,
+      "last_today": "2026-05-18"
+    },
+    "notes": "",
+    "pos": "n",
+    "definitions": [
+      "n: n.军队"
+    ],
+    "example_sentences": [
+      "I want to understand the word 'army' in a real context.",
+      "The meaning of 'army' is related to n.军队."
+    ],
+    "chinese": "n.军队"
+  },
+  {
+    "word": "charter",
+    "translation": "n.宪章;特许证",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": true,
+      "memorized_today": true,
+      "last_reviewed": "2026-05-18T14:28:15.431283Z",
+      "review_count": 1,
+      "last_today": "2026-05-18"
+    },
+    "notes": "",
+    "pos": "",
+    "definitions": [
+      ": n.宪章;特许证"
+    ],
+    "example_sentences": [
+      "I want to understand the word 'charter' in a real context.",
+      "The meaning of 'charter' is related to n.宪章;特许证."
+    ],
+    "chinese": "n.宪章;特许证"
+  },
+  {
+    "word": "civil",
+    "translation": "adj.公民的;民间的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": true,
+      "memorized_today": false,
+      "last_reviewed": "2026-03-31T19:24:59.391084Z",
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": "",
+    "definitions": [
+      ": adj.公民的;民间的"
+    ],
+    "example_sentences": [
+      "I want to understand the word 'civil' in a real context.",
+      "The meaning of 'civil' is related to adj.公民的;民间的."
+    ],
+    "chinese": "adj.公民的;民间的"
+  },
+  {
+    "word": "civilize",
+    "translation": "v.使文明;教育",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": true,
+      "memorized_today": false,
+      "last_reviewed": "2026-03-31T19:24:52.623824Z",
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": "v",
+    "definitions": [
+      "v: teach or refine to be discriminative in taste or judgment",
+      "v: raise from a barbaric to a civilized state"
+    ],
+    "example_sentences": [
+      "Cultivate your musical taste",
+      "Train your tastebuds"
+    ],
+    "chinese": ""
+  },
+  {
+    "word": "collective",
+    "translation": "adj.集体的;共同的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "commonwealth",
+    "translation": "n.联邦;共和国",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "congress",
+    "translation": "n.国会;代表大会",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "conspiracy",
+    "translation": "n.阴谋;密谋",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "corrupt",
+    "translation": "adj.腐败的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "corruption",
+    "translation": "n.腐败;贪污",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "crisis",
+    "translation": "n.危机;危险期",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "democracy",
+    "translation": "n.民主;民主政治",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "democratic",
+    "translation": "adj.民主的;民主政治的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "discrimination",
+    "translation": "n.歧视;辨别力",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "election",
+    "translation": "n.选举;选择权",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "federal",
+    "translation": "adj.联邦的;联盟的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "federation",
+    "translation": "n.联盟;联合",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "freedom",
+    "translation": "n.自由;自主",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "freely",
+    "translation": "adv.自由地;慷慨地",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "govern",
+    "translation": "v.管理;支配",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "government",
+    "translation": "n.政府;治理",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "historical",
+    "translation": "adj.历史的;有关历史的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "history",
+    "translation": "n.历史;历史学",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ideological",
+    "translation": "adj.思想的;意识形态的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "ideology",
+    "translation": "n.意识形态;思想体系",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "immigration",
+    "translation": "n.移民;移民局",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "law",
+    "translation": "n.法律;定律",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "legal",
+    "translation": "adj.法律的;合法的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "legislation",
+    "translation": "n.立法;法规",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "legislative",
+    "translation": "adj.立法的;有立法权的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "legislature",
+    "translation": "n.立法机关;立法机构",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "liberty",
+    "translation": "n.自由;释放",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "liberty",
+    "translation": "n.自由;释放",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "military",
+    "translation": "adj.军事的;军用的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "nation",
+    "translation": "n.国家;民族",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "national",
+    "translation": "adj.国家的;民族的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "opposition",
+    "translation": "n.反对;敌对",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "parliament",
+    "translation": "n.议会;国会",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "participation",
+    "translation": "n.参与;分享",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "patriotism",
+    "translation": "n.爱国主义;爱国心",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "platform",
+    "translation": "n.平台;讲台",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "plight",
+    "translation": "n.困境;境况",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "policy",
+    "translation": "n.政策;保险单",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "political",
+    "translation": "adj.政治的;政治上的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "politics",
+    "translation": "n.政治;政治学",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "power",
+    "translation": "n.力量;幂",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "prejudice",
+    "translation": "n.偏见;损害",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "privilege",
+    "translation": "n.特权;特殊利益",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "progressive",
+    "translation": "adj.进步的;向前进的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "prohibition",
+    "translation": "n.禁止;禁令",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "propaganda",
+    "translation": "n.宣传;宣传资料",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "protest",
+    "translation": "n.抗议;反对",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rebellion",
+    "translation": "n.反叛;叛乱",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "referendum",
+    "translation": "n.公民投票;公投",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "regime",
+    "translation": "n.政权;制度",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "regress",
+    "translation": "v.倒退;退化",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "regulate",
+    "translation": "v.调节;规定",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "regulation",
+    "translation": "n.规则;调节",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "revolt",
+    "translation": "n./v.叛乱;反抗",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "revolution",
+    "translation": "n.革命;旋转",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "revolutionary",
+    "translation": "adj.革命的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "riot",
+    "translation": "n.暴乱;骚动",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "rivalry",
+    "translation": "n.竞争;对抗",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "scandal",
+    "translation": "n.丑闻;诽谤",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "secession",
+    "translation": "n.脱离;退出",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "segregated",
+    "translation": "adj.隔离的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "segregation",
+    "translation": "n.隔离;分离",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "slavery",
+    "translation": "n.奴隶制度;奴隶身分",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "socialism",
+    "translation": "n.社会主义",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "socialist",
+    "translation": "adj.社会主义的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "solidarity",
+    "translation": "n.团结;一致",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sovereign",
+    "translation": "adj.至高无上的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "sovereignty",
+    "translation": "n.主权;主权国家",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "soviet",
+    "translation": "n.苏维埃;苏联",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "suffrage",
+    "translation": "n.选举权;投票",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "totalitarian",
+    "translation": "adj.极权主义的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "treaty",
+    "translation": "n.条约;协定",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "union",
+    "translation": "n.联合;联盟",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "unrest",
+    "translation": "n.不安;动荡",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "uprising",
+    "translation": "n.起义;暴动",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "voluntary",
+    "translation": "adj.自愿的;自发的",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "war",
+    "translation": "n.战争;斗争",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "warfare",
+    "translation": "n.战争;斗争",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  },
+  {
+    "word": "wartime",
+    "translation": "n.战争时期",
+    "unit": "Unit_1_Sub3",
+    "status": {
+      "memorized_past": false,
+      "memorized_today": false,
+      "last_reviewed": null,
+      "review_count": 0
+    },
+    "notes": "",
+    "pos": null,
+    "definitions": [],
+    "example_sentences": []
+  }
+]
