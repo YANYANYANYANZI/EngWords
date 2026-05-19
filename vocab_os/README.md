@@ -1,513 +1,364 @@
 # VocabOS
 
-VocabOS 是一个本地运行的英语词汇学习系统，当前版本包含 Excel/JSON 词库数据、FastAPI 后端、原生 HTML/CSS/JS 前端 SPA、词卡学习、打卡、笔记、默认例句、自定义例句、搜索、仪表盘和黑暗模式。
+VocabOS 是 EngWords 当前实际运行的本地英语词汇学习系统。它使用：
 
-项目已开始 Phase 1 数据库化重构：新增 Async SQLite + SQLAlchemy 2.0 AsyncSession 领域模型和导入流水线，用于未来接入 ECDICT、电影台词例句、AI 自上而下学习、FSRS 复习与多用户进度。当前旧 API 仍读写 JSON，数据库层作为新底座并行存在。
+- FastAPI 后端
+- 原生 HTML/CSS/JavaScript 前端
+- SQLite + Async SQLAlchemy 数据层
+- Tatoeba 英中例句
+- 外部 GPT-SoVITS TTS 服务
 
-> 给后续维护 AI 的重点：这是一个**无构建步骤、无前端框架、旧功能仍兼容 JSON、新功能逐步迁移到 SQLAlchemy 数据层**的项目。不要继续在 JSON 架构上堆复杂功能，新增长期能力优先围绕 ORM 模型和 data_pipeline 设计。
+这份 README 只描述当前真实状态，不保留已经过时的“JSON 仍是主链路”说明。
 
----
+## 1. 项目路径
 
-## 1. 项目路径与目录结构
-
-项目根目录：
-
-```bash
+```text
 /Users/leron/PycharmProjects/EngWords/vocab_os
 ```
 
-核心文件：
+## 2. 目录结构
 
 ```text
 vocab_os/
-├── README.md                     # 项目说明 / 维护指南
-├── init_data.py                   # 从 Excel 初始化 JSON 数据
-├── subclustered_words.xlsx        # 源词表
+├── README.md
+├── requirements.txt
 ├── backend/
-│   ├── __init__.py
-│   ├── app.py                     # FastAPI API、搜索、默认例句、dashboard
-│   ├── core/                      # 新数据库配置、Session、建表入口
-│   ├── orm/                       # SQLAlchemy 领域模型
-│   ├── db.py                      # JSON 文件读写、状态/笔记/例句落盘
-│   └── models.py                  # Pydantic 请求/响应模型
+│   ├── app.py
+│   ├── models.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   └── init_db.py
+│   └── orm/
 ├── data_pipeline/
-│   ├── import_legacy_json.py       # 旧 Unit_*.json -> SQLite
-│   └── import_ecdict.py            # ECDICT 精准补全已有学习词
+│   ├── import_legacy_json.py
+│   └── import_ecdict.py
+├── scripts/
+│   └── import_tatoeba.py
 ├── frontend/
-│   ├── index.html                 # SPA 页面结构
-│   ├── app.js                     # 前端交互、搜索、词卡、笔记菜单、黑暗模式
-│   └── app.css                    # UI 样式、深色模式、卡片/仪表盘
-└── data/
-    ├── units.json                 # 单元索引
-    ├── relations.json             # 预生成相关词关系，体积较大
-    ├── Unit_*.json                # 每个子单元的词卡数据
-    └── unit_summaries/*.md        # 每个子单元概述
+│   ├── index.html
+│   ├── app.js
+│   └── app.css
+├── data/
+│   ├── relations.json
+│   ├── unit_summaries/
+│   └── tatoeba/
+├── db/
+│   └── vocabos.sqlite3
+└── media/
+    └── audio/
 ```
 
----
+## 3. 当前数据状态
 
-## 2. 运行环境与依赖
+当前数据库统计：
 
-当前主要使用 `base311` conda 环境运行。
+- 单词数：6946
+- 聚类数：84
+- Tatoeba 例句：7916
+- 用户例句：37
 
-基础依赖：
+例句缓存目录：
+
+```text
+data/tatoeba/
+├── eng-cmn_links.tsv.bz2
+├── eng_sentences.tsv.bz2
+└── cmn_sentences.tsv.bz2
+```
+
+当前默认例句行为：
+
+- 词卡顶部的 `default_example` 优先读取数据库里的系统例句。
+- 当前优先级是：`tatoeba` > 其他系统来源 > 模板兜底句。
+- “自定义例句”区域只显示真正用户例句，不再显示历史 `legacy_json` 批量模板句。
+
+## 4. 运行环境
+
+当前默认环境是：
+
+```text
+/Users/leron/miniconda3/envs/base311
+```
+
+安装依赖：
 
 ```bash
-pip install -r requirements.txt
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/pip install -r requirements.txt
 ```
+
+`requirements.txt` 当前包含：
+
+- `fastapi`
+- `uvicorn`
+- `pandas`
+- `openpyxl`
+- `sqlalchemy>=2.0`
+- `aiosqlite`
+- `greenlet`
+- `pydantic`
+- `python-dotenv`
+- `httpx`
 
 可选依赖：
 
 ```bash
-pip install nltk
+/Users/leron/miniconda3/envs/base311/bin/pip install nltk
 ```
 
-说明：
+如果安装了 NLTK，`/api/dict/{word}` 会尝试使用 WordNet 提供补充释义、例句、近义词和反义词。
 
-- 后端 `/api/dict/{word}` 会尝试使用 `nltk.corpus.wordnet` 获取释义/例句/近反义词。
-- 如果没有 NLTK 或 WordNet 数据，后端不会崩，会使用本地词库和内置默认例句兜底。
-- 当前不要在请求时自动 `nltk.download()`，会导致接口卡住或联网失败。
+## 5. 启动说明
 
----
+### 5.1 启动后端
 
-## 3. 快速一键启动（推荐）
-
-推荐使用下面命令启动后端 + 前端，并自动打开页面：
+必须从 `vocab_os` 根目录启动：
 
 ```bash
-cd /Users/leron/PycharmProjects/EngWords/vocab_os && \
-mkdir -p .runlogs && \
-(lsof -tiTCP:8000 -sTCP:LISTEN | xargs -r kill) && \
-(lsof -tiTCP:8080 -sTCP:LISTEN | xargs -r kill) && \
-sleep 1 && \
-nohup conda run -n base311 python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 > .runlogs/backend.log 2>&1 & echo $! > .runlogs/backend.pid && \
-nohup conda run -n base311 python -m http.server 8080 --directory frontend > .runlogs/frontend.log 2>&1 & echo $! > .runlogs/frontend.pid && \
-sleep 2 && \
-open 'http://127.0.0.1:8080/index.html?force=4'
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 ```
 
-访问地址：
+不要用下面这种方式：
 
-- 前端：`http://127.0.0.1:8080/index.html?force=4`
-- 后端 API：`http://127.0.0.1:8000/api/units`
+```bash
+cd backend
+uvicorn app:app
+```
+
+原因是 `backend/app.py` 依赖包内相对导入和项目根目录上下文。
+
+### 5.2 启动前端
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/python -m http.server 8080 --directory frontend
+```
+
+### 5.3 访问地址
+
+- 前端：`http://127.0.0.1:8080/index.html`
+- API：`http://127.0.0.1:8000/api/units`
+- 数据库健康检查：`http://127.0.0.1:8000/api/db_health`
+
+### 5.4 常用后台启动方式
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+mkdir -p .runlogs
+nohup /Users/leron/miniconda3/envs/base311/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 > .runlogs/backend.log 2>&1 &
+nohup /Users/leron/miniconda3/envs/base311/bin/python -m http.server 8080 --directory frontend > .runlogs/frontend.log 2>&1 &
+```
 
 查看日志：
 
 ```bash
-cd /Users/leron/PycharmProjects/EngWords/vocab_os
-
 tail -f .runlogs/backend.log
-# 或
 tail -f .runlogs/frontend.log
 ```
 
-停止服务：
+## 6. 数据初始化与导入
+
+### 6.1 建表
 
 ```bash
 cd /Users/leron/PycharmProjects/EngWords/vocab_os
-kill $(cat .runlogs/backend.pid) $(cat .runlogs/frontend.pid)
+/Users/leron/miniconda3/envs/base311/bin/python -m backend.core.init_db
 ```
 
-常见启动坑：
-
-- `Address already in use`：8000 或 8080 被占用，用上面一键启动命令会自动 kill 旧进程。
-- 后端不能用 `cd backend && uvicorn app:app` 启动，因为 `app.py` 使用相对导入 `from . import db`。
-- 正确后端启动方式必须从 `vocab_os` 目录启动：
-
-```bash
-python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
-```
-
----
-
-## 4. 数据模型
-
-### 4.1 当前兼容 JSON 模型
-
-每个单词存在 `data/Unit_x_Suby.json` 中，基本结构：
-
-```json
-{
-  "word": "background",
-  "translation": "n.背景;出身",
-  "unit": "Unit_2_Sub6",
-  "status": {
-    "memorized_past": false,
-    "memorized_today": false,
-    "last_reviewed": null,
-    "review_count": 0
-  },
-  "notes": "",
-  "pos": null,
-  "definitions": [],
-  "example_sentences": [],
-  "chinese": null
-}
-```
-
-运行时后端还会额外返回：
-
-```json
-{
-  "default_example": "A measurable background often requires consistent effort..."
-}
-```
-
-重要概念：
-
-- `translation`：词库原始中文释义。
-- `notes`：旧版兼容字段，由 `notes_v2[].text` 自动拼接生成，仍可被搜索/旧逻辑读取。
-- `notes_v2`：新版独立笔记数组。每条笔记拥有 `id`、`text`、`links`、`created_at`、`updated_at`，可独立编辑、删除、转换例句、关联到其他单词。
-- `example_sentences`：用户自定义例句，通常由笔记转成，可以删除/转回笔记/发音。
-- `default_example`：系统默认例句，后端动态生成或未来从题库映射；**不写入 JSON，前端不可删除**。
-- `definitions` / `pos` / `chinese`：可通过 `/api/enrich_word` 写入，但当前前端已经移除了“补全释义/例句”按钮。
-
-### 4.2 Phase 1 SQLAlchemy 领域模型
-
-新数据库默认路径：
-
-```text
-vocab_os/db/vocabos.sqlite3
-```
-
-核心表：
-
-```text
-words                 # 单词本体：word/phonetic/word_audio_path/translation/definition/source
-word_forms            # 词形变化
-clusters              # Unit/SubUnit/语义主题，可嵌套
-word_clusters         # 单词与聚类多对多关系
-examples              # default/user/movie/ai 例句统一资源
-notes                 # 独立笔记，可关联例句或源笔记
-users                 # 本地默认用户与未来多用户
-user_word_progress    # 用户-单词学习进度，含 FSRS state/lapses/stability/difficulty/retrievability
-ai_sessions           # AI 学习会话
-ai_messages           # AI 对话消息
-```
-
-数据库初始化与旧数据导入：
+### 6.2 导入旧词库
 
 ```bash
 cd /Users/leron/PycharmProjects/EngWords/vocab_os
-python -m backend.core.init_db
-python -m data_pipeline.import_legacy_json
+/Users/leron/miniconda3/envs/base311/bin/python -m data_pipeline.import_legacy_json
 ```
 
-导入 ECDICT 时，只补全已经存在于学习词库中的单词，避免把 300 万级词典全量塞进学习库：
+这个步骤会把旧词库导入 SQLite。当前兼容 API 已经主要读数据库，不应再把旧 JSON 当成主数据源理解。
+
+### 6.3 导入 ECDICT
 
 ```bash
-python -m data_pipeline.import_ecdict /path/to/ecdict.csv
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/python -m data_pipeline.import_ecdict /path/to/ecdict.csv
 ```
 
-健康检查：
+设计目标是只补全已经存在于学习词库中的词，不做全量词典导入。
 
-```http
-GET /api/db_health
+### 6.4 导入 Tatoeba 英中例句
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/python scripts/import_tatoeba.py
 ```
 
-`/api/db_health` 使用异步 SQLAlchemy session，并返回 `driver=async_sqlalchemy` 与 FSRS 字段列表。
+如果需要重建 Tatoeba 例句：
 
-Phase 1 约束：现有前端仍调用 JSON 兼容 API。不要贸然把 `/api/words/{unit_id}` 等接口切到数据库，下一阶段需要先补服务层与响应转换层。
-
----
-
-## 5. 当前 API
-
-### 单元与词卡
-
-```http
-GET /api/units
-GET /api/words/{unit_id}
-GET /api/all_words
+```bash
+cd /Users/leron/PycharmProjects/EngWords/vocab_os
+/Users/leron/miniconda3/envs/base311/bin/python scripts/import_tatoeba.py --replace
 ```
 
-`GET /api/words/{unit_id}` 返回该单元所有词卡，并附带动态字段 `default_example`。
+当前脚本行为：
 
-### 状态与笔记
+- 自动下载并缓存 Tatoeba 官方导出到 `data/tatoeba/`
+- 筛选英文长度 `20 ~ 100`
+- 使用 `\bword\b` 精确正则边界匹配
+- 每个词最多挑选 2 条例句
+- 写入 `examples` 表，`source_type='tatoeba'`
+- 幂等插入，已存在的 `(word_id, text, source_type)` 会跳过
 
-```http
+## 7. API 概览
+
+### 7.1 当前主要路由
+
+兼容路由：
+
+```text
+GET  /api/units
+GET  /api/words/{unit_id}
+GET  /api/all_words
 POST /api/update_word
-```
-
-请求：
-
-```json
-{
-  "unit": "Unit_2_Sub6",
-  "word": "background",
-  "memorized_past": true,
-  "memorized_today": true
-}
-```
-
-```http
 POST /api/update_note
-```
-
-请求：
-
-```json
-{
-  "unit": "Unit_2_Sub6",
-  "word": "background",
-  "notes": "用户笔记"
-}
-```
-
-### 例句/释义落盘
-
-```http
 POST /api/enrich_word
-```
-
-请求：
-
-```json
-{
-  "unit": "Unit_2_Sub6",
-  "word": "background",
-  "pos": "n",
-  "definitions": ["n: the situation or context"],
-  "example_sentences": ["自定义例句"],
-  "chinese": "背景"
-}
-```
-
-目前前端用它来保存/删除自定义例句。
-
-### 字典与搜索
-
-```http
-GET /api/dict/{word}
-GET /api/search/{query}?limit=12
-GET /api/relations
-GET /api/db_health
-```
-
-搜索逻辑在 `backend/app.py`：
-
-- `get_word_corpus()`：缓存加载全部词库。
-- `_search_score()`：基于英文、中文释义、定义字段、模糊相似度打分。
-- 写入笔记/状态/例句后会调用 `get_word_corpus.cache_clear()`，避免搜索缓存陈旧。
-
-### 仪表盘
-
-```http
-GET /api/dashboard
-```
-
-返回总词量、今日复习、已掌握、复习率等数据。
-
-### 单元概述
-
-```http
-GET /api/unit_summary/{unit_id}
+GET  /api/dashboard
+GET  /api/dict/{word}
+GET  /api/search/{query}
+GET  /api/relations
+GET  /api/unit_summary/{unit_id}
 POST /api/unit_summary
 ```
 
-概述文件存储于：
+数据库显式路由：
 
 ```text
-data/unit_summaries/Unit_x_Suby.md
+GET  /api/db/units
+GET  /api/db/words/{unit_id}
+GET  /api/db/all_words
+GET  /api/db/dashboard
+POST /api/db/update_word
+POST /api/db/update_note
+POST /api/db/enrich_word
+GET  /api/db/tts
+GET  /api/db_health
 ```
 
----
+说明：
 
-## 6. 前端功能说明
+- 兼容路由和 `/api/db/*` 现在都落到数据库后端。
+- 前端默认仍使用兼容路由，所以旧 URL 不需要改。
 
-前端没有构建工具，直接由 `python -m http.server` 服务静态文件。
+## 8. 前端行为说明
 
-主要文件：
+前端是无构建链路的原生静态页面。
 
-- `frontend/index.html`：页面结构、按钮、容器。
-- `frontend/app.js`：全部业务交互逻辑。
-- `frontend/app.css`：全部样式和黑暗模式。
+当前主要功能：
 
-当前前端功能：
+- Unit / SubUnit 列表
+- 词卡展示
+- 今日打卡 / 过去掌握
+- 独立笔记
+- 自定义例句
+- 默认例句朗读
+- 搜索
+- 仪表盘
+- 黑暗模式
 
-- 左侧单元/子单元列表。
-- 普通搜索：输入时本地搜索 `allWords`。
-- 语义/模糊搜索：调用 `/api/search/{query}`。
-- 点击搜索结果：跳转到目标单元、滚动到目标单词卡片、高亮，并显示“返回上一级”。
-- 单词发音：使用浏览器 `SpeechSynthesisUtterance`。
-- 默认例句：每张卡片固定显示，只能发音。
-- 自定义例句：来自 `example_sentences`，每条后面有 `⋯` 菜单：发音、转换成独立笔记、删除例句。
-- 笔记区域：使用 `notes_v2` 多条独立笔记；每条笔记独立失焦保存，支持转换为例句、关联到其他单词、删除。关联时可选择：
-  - 默认同步关联：目标词生成一条带来源的关联笔记，后续编辑源笔记时会同步更新目标关联笔记。
-  - 作为副本：目标词生成独立副本，后续不跟随源笔记更新。
-- 仪表盘：Chart.js + 统计卡片。
-- 黑暗模式：`themeToggle` 按钮切换，状态存 `localStorage.vocab_theme`；样式统一使用 CSS 变量覆盖卡片、文字、表单、菜单、例句块、标签与打卡状态。
+缓存注意：
 
----
+- 修改 `frontend/app.js` 或 `frontend/app.css` 后，记得同步更新 `frontend/index.html` 中的版本号。
+- 否则浏览器可能继续加载旧静态资源。
 
-## 7. 浏览器缓存注意事项
+## 9. TTS 说明
 
-前端静态文件容易被浏览器缓存。每次改 `app.js` 或 `app.css` 后，请同步更新 `index.html` 中的版本号：
+### 9.1 当前实现
 
-```html
-<link rel="stylesheet" href="app.css?v=20260518-4" />
-<script src="app.js?v=20260518-4"></script>
+后端 TTS 接口是：
+
+```text
+GET /api/db/tts?word=example&voice=nahida
 ```
 
-如果用户反馈“UI 没变 / 搜索没反应”，优先检查：
+它不是本地直接推理，而是转发到外部 GPT-SoVITS HTTP 服务：
 
-1. `curl http://127.0.0.1:8080/index.html?force=xxx` 是否返回最新版本号。
-2. 浏览器是否需要 `Cmd + Shift + R` 强刷。
-3. `node --check frontend/app.js` 是否有 JS 语法错误。
-4. 后端是否真的运行在 8000。
-
----
-
-## 8. 如何添加/修改功能
-
-### 8.1 新增后端 API
-
-1. 在 `backend/models.py` 添加请求/响应模型。
-2. 在 `backend/app.py` 添加路由。
-3. 如果涉及 JSON 文件读写，优先在 `backend/db.py` 添加函数。
-4. 如果写入了单词相关数据，记得清理缓存：
-
-```python
-get_word_corpus.cache_clear()
+```text
+VOCABOS_TTS_API_URL
+默认值: http://127.0.0.1:9880/tts
 ```
 
-5. 验证：
+### 9.2 当前固定参考音频
+
+`backend/app.py` 当前写死了：
+
+- 参考音频：`media/audio/nahida/nahida_ref.wav`
+- `prompt_text`
+- `prompt_lang=zh`
+- `text_lang=en`
+
+这意味着当前 TTS 主要是为纳西妲音色的英语单词发音配置的。
+
+### 9.3 GPT-SoVITS 相关外部依赖
+
+当前外部项目路径：
+
+```text
+/Users/leron/PycharmProjects/_external/GPT-SoVITS
+```
+
+`fast-langdetect` 大模型需要放在：
+
+```text
+/Users/leron/PycharmProjects/_external/GPT-SoVITS/GPT_SoVITS/pretrained_models/fast_langdetect/lid.176.bin
+```
+
+这个位置是 GPT-SoVITS 代码自己在 `LangSegmenter` 中指定的，不是系统默认缓存目录。
+
+## 10. 验证命令
+
+后端语法检查：
 
 ```bash
 cd /Users/leron/PycharmProjects/EngWords/vocab_os
-python -m py_compile backend/app.py backend/db.py backend/models.py
+python -m py_compile backend/app.py backend/models.py
 ```
 
-### 8.2 修改词卡字段
-
-1. 修改 `backend/models.py` 的 `WordEntry`。
-2. 修改 `data/Unit_*.json` 的实际数据结构（如果是持久字段）。
-3. 修改 `backend/db.py` 的读写逻辑。
-4. 修改 `frontend/app.js` 的 `renderWordGrid()`。
-
-注意：
-
-- `default_example` 是动态字段，不落盘。
-- `example_sentences` 是自定义例句，落盘。
-
-### 8.3 增加真实四六级/雅思例句库
-
-推荐新增文件：
-
-```text
-data/example_bank.json
-```
-
-建议结构：
-
-```json
-{
-  "achievement": [
-    {
-      "sentence": "...",
-      "source": "IELTS Writing Task 2",
-      "translation": "..."
-    }
-  ]
-}
-```
-
-实现建议：
-
-1. 在 `backend/db.py` 新增 `load_example_bank()`。
-2. 在 `backend/app.py` 的 `_default_example()` 中优先查题库。
-3. 优先级：题库例句 > WordNet 例句 > 内置兜底例句。
-4. 前端默认例句块可以展示 `source`，但默认例句仍不可删除。
-
-### 8.4 修改搜索逻辑
-
-后端搜索在 `backend/app.py`：
-
-- `_search_score(query, item)`：调整得分策略。
-- `semantic_search()`：返回 related / opposite。
-- `get_word_corpus()`：缓存全部词库。
-
-前端搜索在 `frontend/app.js`：
-
-- `localSearch()`：普通搜索。
-- `performSemanticSearch()`：语义搜索按钮/回车。
-- `renderSearchResults()` / `renderSemanticResults()`：结果渲染与跳转。
-
-如果要做真正语义向量搜索，建议不要每次请求加载模型。应离线生成 embedding 缓存，例如：
-
-```text
-data/search_index.json
-```
-
-### 8.5 修改 UI
-
-主要改：
-
-- `frontend/index.html`：新增按钮/容器。
-- `frontend/app.css`：样式、响应式、黑暗模式。
-- `frontend/app.js`：交互事件和渲染逻辑。
-
-修改 UI 后记得更新静态资源版本号。
-
----
-
-## 9. 当前已知限制
-
-1. 没有真正的四六级/雅思真题例句库，目前默认例句是后端动态兜底生成。
-2. 搜索是本地启发式模糊搜索，不是真正 embedding 语义搜索。
-3. 数据直接写 JSON 文件，适合本地单人使用，不适合多人并发。
-4. 前端是原生 JS，随着功能增加，`app.js` 会越来越大；如果继续扩展，可以考虑拆分模块，但暂时不要贸然引入 React/Vue。
-5. `relations.json` 很大，读取时注意不要整文件打印到上下文中。
-
----
-
-## 10. 快速验证命令
-
-检查后端语法：
-
-```bash
-cd /Users/leron/PycharmProjects/EngWords/vocab_os
-python -m py_compile backend/app.py backend/db.py backend/models.py
-```
-
-检查前端 JS 语法：
+前端语法检查：
 
 ```bash
 cd /Users/leron/PycharmProjects/EngWords/vocab_os
 node --check frontend/app.js
 ```
 
-验证 API：
+接口检查：
 
 ```bash
+curl -sS http://127.0.0.1:8000/api/db_health
 curl -sS http://127.0.0.1:8000/api/units | jq '.[0]'
-
-curl -sS http://127.0.0.1:8000/api/words/Unit_2_Sub6 | jq '.[0] | {word, translation, default_example, example_sentences}'
-
-curl -sS 'http://127.0.0.1:8000/api/search/%E8%83%8C%E6%99%AF?limit=3' | jq '.related'
+curl -sS http://127.0.0.1:8000/api/words/Unit_2_Sub6 | jq '.[0] | {word, default_example, example_sentences}'
 ```
 
-验证前端是否服务新版：
+Tatoeba 数据检查：
 
 ```bash
-curl -sS 'http://127.0.0.1:8080/index.html?force=4' | grep -n 'app.css\|app.js\|themeToggle\|searchBackBtn'
+sqlite3 db/vocabos.sqlite3 "select source_type, count(*) from examples group by source_type;"
 ```
 
----
+## 11. 当前已知问题
 
-## 11. 给后续 AI 的维护原则
+1. TTS 依赖外部 GPT-SoVITS 服务，不是本仓库自包含能力；只启动 VocabOS 不等于 TTS 可用。
+2. 当前 `base311` 环境虽然已经安装 arm64 稳定版 PyTorch，但 `torch.backends.mps.is_available()` 仍为 `False`。这说明 macOS MPS 链路仍有问题，GPT-SoVITS 相关性能和设备选择不能假定正常。
+3. `backend/app.py` 中仍包含部分写死的本机绝对路径和固定 TTS 参数，跨机器移植性一般。
+4. `frontend/app.js` 仍是单文件原生脚本，功能继续增加后维护成本会持续上升。
+5. 仓库当前有正在进行中的迁移与数据改动，某些旧 README、旧脚本说明、旧 JSON 假设已经不可靠；排障时应以数据库和当前路由实现为准。
+6. `relations.json` 体积较大，阅读和调试时不要整体打印。
+7. `backend/core/`、`media/` 目录里存在 `.DS_Store` 和 `__pycache__` 类文件痕迹，提交前应继续注意清理无关噪音。
 
-- 优先读这几个文件：`backend/app.py`、`backend/db.py`、`backend/models.py`、`frontend/app.js`、`frontend/app.css`、`frontend/index.html`。
-- 不要直接假设当前浏览器加载的是最新前端文件，先检查版本号和缓存。
-- 不要在 API 请求中下载大模型或语料。
-- 修改 JSON 数据结构时要考虑已有 84 个 `Unit_*.json` 文件兼容性。
-- 修改搜索/例句功能时要区分：
-  - 默认例句：系统/题库提供，不落盘到单词 JSON，不允许用户删除。
-  - 自定义例句：用户笔记转化，保存在 `example_sentences`，允许删除/转笔记/发音。
-  - 独立笔记：保存在 `notes_v2`，`notes` 只是兼容拼接文本；新增笔记功能优先操作 `notes_v2`。
-- 每次完成后至少跑：
+## 12. 维护建议
 
-```bash
-python -m py_compile backend/app.py backend/db.py backend/models.py
-node --check frontend/app.js
-```
+- 后续功能优先围绕数据库模型和服务链路做，不要再把复杂能力堆回旧 JSON 架构。
+- 处理例句时要区分三类数据：
+  - 系统默认例句：如 `tatoeba`
+  - 用户例句：`source_type='user'`
+  - 历史遗留模板句：不要再当作用户内容展示
+- 如果继续增强 TTS，先把配置从 `backend/app.py` 的硬编码中拆出来。
+- 如果继续扩展前端，至少先把 `app.js` 按 API、状态、渲染拆分模块，再考虑是否引入框架。

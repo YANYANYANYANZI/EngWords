@@ -281,6 +281,37 @@ function restoreScrollPosition(y) {
 
 function speak(text) {
   if (!text) return;
+  
+  // 清理上一个正在播放的音频
+  if (window._speakAudio) {
+    window._speakAudio.pause();
+    window._speakAudio = null;
+  }
+
+  // 尝试通过后端 TTS（纳西妲语音模型）获取发音
+  const ttsUrl = `${API_BASE}/db/tts?voice=nahida&word=${encodeURIComponent(text)}`;
+  fetch(ttsUrl)
+    .then((res) => {
+      if (!res.ok) throw new Error(`TTS backend returned ${res.status}`);
+      return res.blob();
+    })
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      window._speakAudio = audio;
+      audio.play().catch((err) => {
+        console.warn("TTS audio play failed, fallback to browser speech", err);
+        fallbackSpeak(text);
+      });
+      audio.onended = () => URL.revokeObjectURL(url);
+    })
+    .catch((err) => {
+      console.warn("TTS backend unavailable, fallback to browser speech", err);
+      fallbackSpeak(text);
+    });
+}
+
+function fallbackSpeak(text) {
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US";

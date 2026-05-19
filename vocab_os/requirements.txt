@@ -6,3 +6,5 @@ sqlalchemy>=2.0
 aiosqlite
 greenlet
 pydantic
+python-dotenv
+httpx
