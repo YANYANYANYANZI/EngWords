@@ -404,6 +404,14 @@ def _study_card_payload(word: Word, unit_id: str, progress: UserWordProgress | N
     default_example = _select_default_example_text(word.examples, word.word, word.translation or "")
     tatoeba_example = _pick_example_by_source(word.examples, "tatoeba")
     ai_example = _pick_example_by_source(word.examples, "ai")
+    notes = [{
+        "id": f"db_note_{note.id}",
+        "text": note.text,
+        "links": note.extra.get("links", []) if isinstance(note.extra, dict) else [],
+        "created_at": _dt_to_iso(note.created_at),
+        "updated_at": _dt_to_iso(note.updated_at),
+    } for note in (word.notes or [])]
+    user_examples = _select_user_examples(word.examples, word.word)
     return {
         "word_id": word.id,
         "word": word.word,
@@ -411,8 +419,14 @@ def _study_card_payload(word: Word, unit_id: str, progress: UserWordProgress | N
         "queue_kind": queue_kind,
         "phonetic": word.phonetic or "",
         "translation": word.translation or "",
+        "chinese": word.translation or "",
+        "pos": word.pos or "",
+        "tags": word.tags or "",
         "definitions": [line.strip() for line in (word.definition or "").splitlines() if line.strip()],
         "default_example": default_example,
+        "example_sentences": user_examples,
+        "notes": "\n".join(note["text"] for note in notes if note.get("text")),
+        "notes_v2": notes,
         "tatoeba_example": {
             "text": tatoeba_example.text,
             "translation": tatoeba_example.translation or "",
@@ -662,10 +676,12 @@ async def get_db_dashboard():
 async def get_study_today(
     new_limit: int = Query(STUDY_NEW_LIMIT_DEFAULT, ge=0, le=100),
     review_limit: int = Query(STUDY_REVIEW_LIMIT_DEFAULT, ge=0, le=200),
+    unit: str | None = Query(None),
 ):
     async with AsyncSessionLocal() as session:
         user_id = await _get_default_user_id(session)
         now = _utc_now()
+        unit_code = unit.strip() if unit and unit.strip() else None
 
         review_rows = (
             await session.execute(
@@ -676,7 +692,7 @@ async def get_study_today(
                     UserWordProgress,
                     and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
                 )
-                .options(selectinload(Word.examples))
+                .options(selectinload(Word.examples), selectinload(Word.notes))
                 .where(
                     or_(
                         UserWordProgress.due <= _to_db_utc(now),
@@ -689,6 +705,7 @@ async def get_study_today(
                         ),
                     ),
                     func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) > 0,
+                    Cluster.code == unit_code if unit_code else True,
                 )
                 .order_by(
                     func.coalesce(
@@ -715,7 +732,9 @@ async def get_study_today(
                     and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
                 )
                 .options(selectinload(Word.examples))
+                .options(selectinload(Word.notes))
                 .where(func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) == 0)
+                .where(Cluster.code == unit_code if unit_code else True)
                 .order_by(Cluster.code, WordCluster.position, Word.word)
                 .limit(new_limit)
             )
@@ -727,9 +746,13 @@ async def get_study_today(
         total_due_reviews = await session.scalar(
             select(func.count())
             .select_from(UserWordProgress)
+            .join(Word, Word.id == UserWordProgress.word_id)
+            .join(WordCluster, WordCluster.word_id == Word.id)
+            .join(Cluster, Cluster.id == WordCluster.cluster_id)
             .where(
                 UserWordProgress.user_id == user_id,
                 func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) > 0,
+                Cluster.code == unit_code if unit_code else True,
                 or_(
                     UserWordProgress.due <= _to_db_utc(now),
                     and_(
@@ -745,15 +768,19 @@ async def get_study_today(
         total_new_cards = await session.scalar(
             select(func.count())
             .select_from(Word)
+            .join(WordCluster, WordCluster.word_id == Word.id)
+            .join(Cluster, Cluster.id == WordCluster.cluster_id)
             .outerjoin(
                 UserWordProgress,
                 and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
             )
             .where(func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) == 0)
+            .where(Cluster.code == unit_code if unit_code else True)
         ) or 0
 
         return {
             "generated_at": _dt_to_iso(now),
+            "unit": unit_code,
             "stats": {
                 "new_limit": new_limit,
                 "review_limit": review_limit,
@@ -783,6 +810,7 @@ async def post_study_review(req: StudyReviewRequest):
                     and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
                 )
                 .options(selectinload(Word.examples))
+                .options(selectinload(Word.notes))
                 .where(Word.id == req.word_id)
                 .order_by(WordCluster.position)
                 .limit(1)

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VocabOS Focus Detail</title>
+  <link rel="stylesheet" href="focus.css?v=20260519-detail4" />
+  <link rel="stylesheet" href="focus_detail.css?v=20260519-detail4" />
+</head>
+<body>
+  <div class="focus-app detail-app">
+    <header class="focus-topbar">
+      <div>
+        <p class="eyebrow">Phase 6</p>
+        <h1>单词详情页</h1>
+      </div>
+      <div class="topbar-actions">
+        <a id="backToFocusLink" class="ghost-link" href="focus.html">返回刷词卡</a>
+      </div>
+    </header>
+
+    <section class="progress-shell">
+      <div class="progress-head">
+        <div id="detailMeta" class="deck-meta">加载详情中...</div>
+        <div id="pendingRatingTag" class="deck-step">-</div>
+      </div>
+      <div id="actionStatus" class="deck-meta"></div>
+    </section>
+
+    <main class="detail-stage">
+      <article class="detail-card">
+        <div class="word-badge-row">
+          <span id="detailQueueBadge" class="queue-badge">NEW</span>
+          <span id="detailUnitBadge" class="unit-badge">Unit</span>
+        </div>
+        <div class="detail-word-head">
+          <div>
+            <h2 id="detailWord">word</h2>
+            <p id="detailPhonetic" class="phonetic"></p>
+          </div>
+          <button id="detailSpeakBtn" class="speak-btn" type="button">播放发音</button>
+        </div>
+        <section id="detailDefinitionBlock" class="info-block hidden"></section>
+        <section id="detailDefaultExampleBlock" class="info-block hidden"></section>
+        <section id="detailTatoebaBlock" class="info-block hidden"></section>
+        <section id="detailAiBlock" class="info-block hidden"></section>
+        <section id="detailCustomExamplesBlock" class="info-block hidden"></section>
+        <section id="detailNotesBlock" class="info-block hidden"></section>
+      </article>
+    </main>
+
+    <footer class="rating-dock detail-dock">
+      <button id="prevBtn" class="rating-btn detail-nav-btn" type="button">
+        <span>Back</span>
+        <strong>上一个</strong>
+      </button>
+      <button id="wrongBtn" class="rating-btn rating-again" type="button">
+        <span>Again</span>
+        <strong>记错了</strong>
+      </button>
+      <button id="nextBtn" class="rating-btn rating-good" type="button">
+        <span>Next</span>
+        <strong>下一个</strong>
+      </button>
+    </footer>
+  </div>
+
+  <script src="focus_detail.js?v=20260519-detail4"></script>
+</body>
+</html>

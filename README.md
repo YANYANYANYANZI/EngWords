@@ -77,6 +77,7 @@ cd /Users/leron/PycharmProjects/EngWords
 
 - 前端：`http://127.0.0.1:8080/index.html`
 - 沉浸式刷词页：`http://127.0.0.1:8080/focus.html`
+- 刷词详情页：`http://127.0.0.1:8080/focus_detail.html`
 - API：`http://127.0.0.1:8000/api/units`
 - 数据库健康检查：`http://127.0.0.1:8000/api/db_health`
 
@@ -93,8 +94,29 @@ cd /Users/leron/PycharmProjects/EngWords
 - 今日复习上限 `50`
 - 使用 `fsrs` 调度器进行 `Again / Hard / Good / Easy` 四档评分
 - 新卡或回炉卡若短时间内再次到期，会自动回到当前学习会话队列
-- 首次只展示单词与发音，翻牌后展示音标、释义、Tatoeba / AI 例句
-- 支持快捷键：空格翻牌，数字 `1 2 3 4` 直接评分
+- `focus.html` 只负责聚焦记忆与熟悉度选择，数字 `1 2 3 4` 会进入详情页
+- `focus_detail.html` 负责查看详情、编辑笔记与例句，再决定进入下一张
+- `focus.html` 的翻牌只保留为提示记忆功能；翻牌后显示释义、例句、笔记的只读内容
+
+当前前端交互规则：
+
+- 卡片页点击空白处或按空格只负责翻牌，不直接提交评分
+- 点 `1 2 3 4` 会把当前预选评分带入 `focus_detail.html`
+- 详情页 `下一个` 会按预选评分提交，然后回到下一张卡片页
+- 详情页 `记错了` 等同于评分 `1`，提交后回到下一张卡片页
+- 详情页 `上一个` 只查看本次会话里刚背过的上一张，不推进当前队列
+- 只有评分 `4 / 容易` 才会从当前循环队列移除
+- 评分 `1 / 2 / 3` 会回到队列尾部继续循环
+
+当前已知实现约束：
+
+- 刷词会话状态保存在浏览器 `sessionStorage`
+- 单元刷词与全局刷词现在按不同 session bucket 独立保存，避免互相覆盖
+- 总进度会优先实时拉取；若进度请求失败，会保留已存在的会话进度而不是清零
+
+更多设计与实现细节见：
+
+- [项目详细进度和设计细则.md](./项目详细进度和设计细则.md)
 
 ## 数据初始化
 
@@ -197,3 +219,10 @@ python scripts/init_data.py
 - 例句默认优先级为：`pinned > tatoeba > ai > movie > subtitle > default > user`
 - `POST /api/db/swap_example` 可把现有例句置顶为默认例句
 - 根目录现在是唯一 README、唯一启动路径、唯一项目入口
+- 沉浸式刷词当前相关前端文件为：
+  `frontend/focus.html`
+  `frontend/focus.css`
+  `frontend/focus.js`
+  `frontend/focus_detail.html`
+  `frontend/focus_detail.css`
+  `frontend/focus_detail.js`

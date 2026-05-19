@@ -24,6 +24,8 @@ const backToWords = document.getElementById("backToWords");
 const searchBackBtn = document.getElementById("searchBackBtn");
 const themeToggle = document.getElementById("themeToggle");
 const menuBar = document.getElementById("menuBar");
+const focusStudyBtn = document.getElementById("focusStudyBtn");
+const FOCUS_UNIT_KEY = "engwords_focus_selected_unit";
 
 let units = [];
 let currentUnit = null;
@@ -167,6 +169,7 @@ async function fetchUnits() {
   units = await res.json();
   unitTree = groupUnits(units);
   renderUnitList();
+  updateFocusStudyLink();
 }
 
 async function loadAllWords() {
@@ -226,6 +229,19 @@ function renderUnitList() {
   });
 }
 
+function updateFocusStudyLink() {
+  if (!focusStudyBtn) return;
+  if (currentUnit) {
+    localStorage.setItem(FOCUS_UNIT_KEY, currentUnit);
+    focusStudyBtn.href = `focus.html?unit=${encodeURIComponent(currentUnit)}`;
+    focusStudyBtn.textContent = `沉浸刷词 · ${SUBUNIT_TITLES[currentUnit] || currentUnit}`;
+    return;
+  }
+  localStorage.removeItem(FOCUS_UNIT_KEY);
+  focusStudyBtn.href = "focus.html";
+  focusStudyBtn.textContent = "沉浸刷词";
+}
+
 async function loadUnit(unitId) {
   currentUnit = unitId;
   unitNameEl.textContent = `${SUBUNIT_TITLES[unitId] || unitId}   /   ${UNIT_TITLES[unitId.split("_")[0]] || unitId.split("_")[0]}`;
@@ -244,6 +260,7 @@ async function loadUnit(unitId) {
   }
   renderStats();
   renderUnitList();
+  updateFocusStudyLink();
   await loadSummary(unitId);
 }
 

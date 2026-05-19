@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VocabOS Focus</title>
-  <link rel="stylesheet" href="focus.css?v=20260519-fsrs1" />
+  <link rel="stylesheet" href="focus.css?v=20260519-fsrs5" />
 </head>
 <body>
   <div class="focus-app">
@@ -13,9 +13,20 @@
         <p class="eyebrow">Phase 6</p>
         <h1>沉浸式聚焦刷词</h1>
       </div>
-      <div class="topbar-actions">
-        <a class="ghost-link" href="index.html">返回总览</a>
-        <button id="reloadBtn" class="ghost-btn" type="button">刷新今日队列</button>
+      <div class="topbar-side">
+        <div class="focus-modebar">
+          <div id="currentUnitChip" class="mode-chip hidden"></div>
+          <div id="topProgressChip" class="progress-chip hidden">
+            <span id="topProgressLabel">总记忆进度</span>
+            <strong id="topProgressText">0 / 0</strong>
+            <div class="mini-meter"><i id="topProgressBar"></i></div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="scopeToggleBtn" class="ghost-btn" type="button">切到全局</button>
+          <a class="ghost-link" href="index.html">返回总览</a>
+          <button id="reloadBtn" class="ghost-btn" type="button">刷新今日队列</button>
+        </div>
       </div>
     </header>
 
@@ -56,7 +67,7 @@
             <h2 id="wordText">word</h2>
             <button id="speakBtn" class="speak-btn" type="button">播放发音</button>
           </div>
-          <p class="flip-hint">点击空白处或按空格翻牌</p>
+          <p class="flip-hint">点击空白处、按空格，或直接点底部评分都能翻牌</p>
         </div>
 
         <div class="card-face card-back">
@@ -71,6 +82,9 @@
             <div id="definitionBlock" class="info-block hidden"></div>
             <div id="tatoebaBlock" class="info-block hidden"></div>
             <div id="aiBlock" class="info-block hidden"></div>
+            <div id="defaultExampleBlock" class="info-block hidden"></div>
+            <div id="customExamplesBlock" class="info-block hidden"></div>
+            <div id="notesBlock" class="info-block hidden"></div>
           </div>
         </div>
       </section>
@@ -96,6 +110,6 @@
     </footer>
   </div>
 
-  <script src="focus.js?v=20260519-fsrs1"></script>
+  <script src="focus.js?v=20260519-fsrs5"></script>
 </body>
 </html>

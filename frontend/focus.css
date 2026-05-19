@@ -50,6 +50,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
+  gap: 16px;
 }
 
 .eyebrow {
@@ -68,9 +69,26 @@ body {
   letter-spacing: -.04em;
 }
 
+.topbar-side {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: end;
+}
+
+.focus-modebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .topbar-actions {
   display: flex;
+  align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .ghost-link, .ghost-btn {
@@ -82,6 +100,52 @@ body {
   text-decoration: none;
   font: inherit;
   cursor: pointer;
+}
+
+.mode-chip,
+.progress-chip {
+  background: rgba(255,255,255,.62);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 14px;
+}
+
+.mode-chip {
+  font-size: .95rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.progress-chip {
+  min-width: 260px;
+}
+
+.progress-chip span {
+  display: inline;
+  color: var(--muted);
+  font-size: .8rem;
+  margin-right: 8px;
+}
+
+.progress-chip strong {
+  display: inline;
+  font-size: 1rem;
+  letter-spacing: -.03em;
+}
+
+.mini-meter {
+  height: 8px;
+  background: rgba(164, 81, 43, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.mini-meter i {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #c05b1a, #8e2f18);
 }
 
 .progress-shell {
@@ -156,6 +220,7 @@ body {
   display: grid;
   place-items: center;
   min-height: 0;
+  perspective: 1400px;
 }
 
 .focus-card, .empty-state {
@@ -182,11 +247,7 @@ body {
   border-radius: 34px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: transform .4s ease, box-shadow .4s ease;
-}
-
-.focus-card.is-revealed {
-  transform: rotateX(180deg);
+  transition: box-shadow .24s ease, opacity .2s ease;
 }
 
 .card-face {
@@ -195,7 +256,6 @@ body {
   padding: 26px 30px;
   display: flex;
   flex-direction: column;
-  backface-visibility: hidden;
 }
 
 .card-front {
@@ -203,10 +263,18 @@ body {
 }
 
 .card-back {
-  transform: rotateX(180deg);
+  display: none;
   background:
     linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,248,235,.95)),
     repeating-linear-gradient(180deg, transparent 0 34px, rgba(116,102,93,.06) 34px 35px);
+}
+
+.focus-card.is-revealed .card-front {
+  display: none;
+}
+
+.focus-card.is-revealed .card-back {
+  display: flex;
 }
 
 .back-scroll {
@@ -310,6 +378,73 @@ body {
   color: var(--muted);
 }
 
+.info-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mini-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mini-btn {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.72);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.list-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.stack-row {
+  border-top: 1px dashed var(--line);
+  padding-top: 10px;
+}
+
+.stack-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.stack-row p {
+  margin: 0;
+}
+
+.stack-row p + p {
+  margin-top: 6px;
+}
+
+.stack-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.note-editor {
+  width: 100%;
+  min-height: 78px;
+  resize: vertical;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.76);
+  color: var(--ink);
+  padding: 10px 12px;
+  font: inherit;
+  margin-top: 8px;
+}
+
 .rating-dock {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -365,6 +500,7 @@ body {
 @media (max-width: 900px) {
   .focus-app { padding: 14px; }
   .focus-topbar, .progress-head { display: grid; }
+  .topbar-side, .focus-modebar, .topbar-actions { justify-items: stretch; justify-content: stretch; }
   .topbar-actions, .meter-grid, .rating-dock { grid-template-columns: 1fr 1fr; }
   .topbar-actions { display: grid; }
   .focus-card { min-height: 56vh; }
