@@ -66,11 +66,35 @@ cd /Users/leron/PycharmProjects/EngWords
 /Users/leron/miniconda3/envs/base311/bin/python -m http.server 8080 --directory frontend
 ```
 
+如果 `8080` 已被占用，可切到别的端口，例如：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords
+/Users/leron/miniconda3/envs/base311/bin/python -m http.server 8081 --directory frontend
+```
+
 访问：
 
 - 前端：`http://127.0.0.1:8080/index.html`
+- 沉浸式刷词页：`http://127.0.0.1:8080/focus.html`
 - API：`http://127.0.0.1:8000/api/units`
 - 数据库健康检查：`http://127.0.0.1:8000/api/db_health`
+
+## 沉浸式刷词（FSRS）
+
+当前已经提供一个独立的聚焦刷词入口 `frontend/focus.html`，对应后端接口：
+
+- `GET /api/db/study/today`
+- `POST /api/db/study/review`
+
+默认策略：
+
+- 今日新词上限 `20`
+- 今日复习上限 `50`
+- 使用 `fsrs` 调度器进行 `Again / Hard / Good / Easy` 四档评分
+- 新卡或回炉卡若短时间内再次到期，会自动回到当前学习会话队列
+- 首次只展示单词与发音，翻牌后展示音标、释义、Tatoeba / AI 例句
+- 支持快捷键：空格翻牌，数字 `1 2 3 4` 直接评分
 
 ## 数据初始化
 
@@ -127,6 +151,30 @@ bash scripts/setup_external.sh
 3. 如需覆盖 TTS 地址或参考音频路径，在 `.env` 中设置：
    `VOCABOS_TTS_API_URL`
    `VOCABOS_TTS_REF_AUDIO_PATH`
+
+本地启动纳西妲 TTS 的一个可用示例：
+
+```bash
+cd /Users/leron/PycharmProjects/_external/GPT-SoVITS
+env \
+  MPLCONFIGDIR=/private/tmp/gptsovits-mpl \
+  NUMBA_CACHE_DIR=/private/tmp/gptsovits-numba \
+  XDG_CACHE_HOME=/private/tmp/gptsovits-cache \
+  PYTORCH_ENABLE_MPS_FALLBACK=1 \
+  KMP_DUPLICATE_LIB_OK=TRUE \
+  python api_v2.py \
+  --bind_addr 127.0.0.1 \
+  --port 9880 \
+  --tts_config GPT_SoVITS/configs/tts_infer_nahida.yaml
+```
+
+如果后端需要显式指定参考音频，可这样启动：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords
+env VOCABOS_TTS_REF_AUDIO_PATH=/Users/leron/PycharmProjects/EngWords/media/audio/nahida/nahida_ref.wav \
+  /Users/leron/miniconda3/envs/base311/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
 
 ## 离线词库脚本
 

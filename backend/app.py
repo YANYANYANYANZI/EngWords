@@ -2,12 +2,13 @@ import json
 import os
 import re
 import hashlib
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
 import difflib
 from dotenv import load_dotenv
+from fsrs import Card, Rating, Scheduler, State
 
 # 加载项目根目录 .env 文件
 dotenv_path = Path(__file__).resolve().parent.parent / ".env"
@@ -21,13 +22,15 @@ import httpx
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from sqlalchemy import and_, delete, func, select
+from sqlalchemy import and_, delete, func, or_, select
 from sqlalchemy.orm import selectinload
 
 from .core.config import BASE_DIR
-from .core.database import AsyncSessionLocal
+from .core.database import AsyncSessionLocal, create_all_tables
 from .models import (
     EnrichWordRequest,
+    StudyRatingResult,
+    StudyReviewRequest,
     SwapExampleRequest,
     UnitInfo,
     UnitSummaryRequest,
@@ -72,8 +75,24 @@ TTS_BATCH_SIZE = int(os.getenv("VOCABOS_TTS_BATCH_SIZE", "1"))
 TTS_SPEED_FACTOR = float(os.getenv("VOCABOS_TTS_SPEED_FACTOR", "1.0"))
 TTS_CACHE_NAMESPACE = os.getenv("VOCABOS_TTS_CACHE_NAMESPACE", "nahida")
 TTS_TIMEOUT = httpx.Timeout(180.0, connect=10.0)
+FSRS_DESIRED_RETENTION = float(os.getenv("VOCABOS_FSRS_DESIRED_RETENTION", "0.9"))
+FSRS_MAXIMUM_INTERVAL = int(os.getenv("VOCABOS_FSRS_MAXIMUM_INTERVAL", "3650"))
+FSRS_ENABLE_FUZZING = os.getenv("VOCABOS_FSRS_ENABLE_FUZZING", "true").strip().lower() not in {"0", "false", "no"}
+STUDY_NEW_LIMIT_DEFAULT = int(os.getenv("VOCABOS_STUDY_NEW_LIMIT", "20"))
+STUDY_REVIEW_LIMIT_DEFAULT = int(os.getenv("VOCABOS_STUDY_REVIEW_LIMIT", "50"))
+SESSION_REQUEUE_WINDOW_MINUTES = int(os.getenv("VOCABOS_SESSION_REQUEUE_WINDOW_MINUTES", "15"))
+FSRS_SCHEDULER = Scheduler(
+    desired_retention=FSRS_DESIRED_RETENTION,
+    maximum_interval=FSRS_MAXIMUM_INTERVAL,
+    enable_fuzzing=FSRS_ENABLE_FUZZING,
+)
 
 
+
+
+@app.on_event("startup")
+async def on_startup() -> None:
+    await create_all_tables()
 
 
 @app.get("/api/db_health")
@@ -239,7 +258,25 @@ def _entry_haystack(item: Dict[str, Any]) -> str:
 
 
 def _dt_to_iso(value):
-    return value.isoformat() + "Z" if value else None
+    value = _to_utc(value)
+    return value.isoformat().replace("+00:00", "Z") if value else None
+
+
+def _utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _to_utc(value: datetime | None) -> datetime | None:
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
+
+
+def _to_db_utc(value: datetime | None) -> datetime | None:
+    value = _to_utc(value)
+    return value.replace(tzinfo=None) if value else None
 
 
 def _summary_file(unit_id: str) -> Path:
@@ -265,11 +302,177 @@ def _audio_cache_path(text: str, voice: str | None = None) -> Path:
     return NAHIDA_CACHE_DIR / namespace / f"{stem}_{digest}.wav"
 
 
+def _pick_example_by_source(examples: List[Example], source_type: str) -> Example | None:
+    wanted = (source_type or "").strip().lower()
+    matches = [example for example in (examples or []) if (example.source_type or "").strip().lower() == wanted and example.text]
+    if not matches:
+        return None
+    matches.sort(key=lambda example: (-(example.quality_score or 0), len(example.text or ""), example.id or 0))
+    return matches[0]
+
+
+def _progress_state_value(progress: UserWordProgress | None) -> int:
+    if not progress:
+        return State.Learning.value
+    return progress.state if progress.state in {1, 2, 3} else State.Learning.value
+
+
+def _progress_reps(progress: UserWordProgress | None) -> int:
+    if not progress:
+        return 0
+    return max(progress.reps or 0, progress.review_count or 0)
+
+
+def _progress_due(progress: UserWordProgress | None) -> datetime | None:
+    if not progress:
+        return None
+    return _to_utc(progress.due or progress.next_review_at)
+
+
+def _progress_last_review(progress: UserWordProgress | None) -> datetime | None:
+    if not progress:
+        return None
+    return _to_utc(progress.last_review or progress.last_reviewed_at)
+
+
+def _progress_to_card(progress: UserWordProgress, now: datetime) -> Card:
+    if progress.stability is None or progress.difficulty is None:
+        reps = max(1, min(_progress_reps(progress), 3))
+        seed_card = Card(card_id=progress.fsrs_card_id or progress.word_id)
+        for offset in range(reps):
+            review_time = now - timedelta(days=max(reps - offset, 1))
+            seed_card, _ = FSRS_SCHEDULER.review_card(seed_card, Rating.Good, review_datetime=review_time)
+        return Card(
+            card_id=seed_card.card_id,
+            state=State.Review if _progress_reps(progress) > 0 else State.Learning,
+            step=seed_card.step,
+            stability=seed_card.stability,
+            difficulty=seed_card.difficulty,
+            due=_progress_due(progress) or now,
+            last_review=_progress_last_review(progress) or seed_card.last_review,
+        )
+    return Card(
+        card_id=progress.fsrs_card_id or progress.word_id,
+        state=State(_progress_state_value(progress)),
+        step=progress.fsrs_step,
+        stability=progress.stability,
+        difficulty=progress.difficulty,
+        due=_progress_due(progress) or now,
+        last_review=_progress_last_review(progress),
+    )
+
+
+def _study_status(progress: UserWordProgress | None) -> Dict[str, Any]:
+    return {
+        "memorized_past": bool(progress.memorized_past) if progress else False,
+        "memorized_today": bool(progress.memorized_today) if progress else False,
+        "last_reviewed": _dt_to_iso(progress.last_reviewed_at) if progress else None,
+        "review_count": progress.review_count if progress else 0,
+        "state": _progress_state_value(progress) if progress else State.Learning.value,
+        "stability": progress.stability if progress else None,
+        "difficulty": progress.difficulty if progress else None,
+        "retrievability": progress.retrievability if progress else None,
+        "lapses": progress.lapses if progress else 0,
+        "reps": _progress_reps(progress),
+        "due": _dt_to_iso(_progress_due(progress)),
+        "last_review": _dt_to_iso(_progress_last_review(progress)),
+    }
+
+
+def _merge_study_queue(review_cards: List[Dict[str, Any]], new_cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    queue: List[Dict[str, Any]] = []
+    review_index = 0
+    new_index = 0
+    while review_index < len(review_cards) or new_index < len(new_cards):
+        for _ in range(2):
+            if review_index < len(review_cards):
+                queue.append(review_cards[review_index])
+                review_index += 1
+        if new_index < len(new_cards):
+            queue.append(new_cards[new_index])
+            new_index += 1
+        if review_index >= len(review_cards) and new_index < len(new_cards):
+            queue.extend(new_cards[new_index:])
+            break
+        if new_index >= len(new_cards) and review_index < len(review_cards):
+            queue.extend(review_cards[review_index:])
+            break
+    return queue
+
+
+def _study_card_payload(word: Word, unit_id: str, progress: UserWordProgress | None, queue_kind: str) -> Dict[str, Any]:
+    default_example = _select_default_example_text(word.examples, word.word, word.translation or "")
+    tatoeba_example = _pick_example_by_source(word.examples, "tatoeba")
+    ai_example = _pick_example_by_source(word.examples, "ai")
+    return {
+        "word_id": word.id,
+        "word": word.word,
+        "unit": unit_id,
+        "queue_kind": queue_kind,
+        "phonetic": word.phonetic or "",
+        "translation": word.translation or "",
+        "definitions": [line.strip() for line in (word.definition or "").splitlines() if line.strip()],
+        "default_example": default_example,
+        "tatoeba_example": {
+            "text": tatoeba_example.text,
+            "translation": tatoeba_example.translation or "",
+        } if tatoeba_example else None,
+        "ai_example": {
+            "text": ai_example.text,
+            "translation": ai_example.translation or "",
+        } if ai_example else None,
+        "status": _study_status(progress),
+    }
+
+
+def _apply_review_result(
+    progress: UserWordProgress,
+    card: Card,
+    rating_value: int,
+    review_time: datetime,
+) -> StudyRatingResult:
+    progress.fsrs_card_id = card.card_id
+    progress.fsrs_step = card.step
+    progress.state = int(card.state.value)
+    progress.stability = card.stability
+    progress.difficulty = card.difficulty
+    progress.last_review = _to_db_utc(card.last_review or review_time)
+    progress.last_reviewed_at = progress.last_review
+    progress.due = _to_db_utc(card.due)
+    progress.next_review_at = progress.due
+    progress.reps = _progress_reps(progress) + 1
+    progress.review_count = progress.reps
+    if rating_value == int(Rating.Again):
+        progress.lapses = (progress.lapses or 0) + 1
+    progress.memorized_past = progress.reps > 0
+    progress.memorized_today = True
+    progress.retrievability = FSRS_SCHEDULER.get_card_retrievability(card, current_datetime=review_time)
+    progress.status = "review" if progress.state == State.Review.value else "learning"
+    extra = dict(progress.extra or {})
+    extra["last_rating"] = int(rating_value)
+    progress.extra = extra
+
+    due_utc = _to_utc(card.due) or review_time
+    due_in_seconds = max(0, int((due_utc - review_time).total_seconds()))
+    return StudyRatingResult(
+        rating=int(rating_value),
+        due=_dt_to_iso(card.due),
+        due_in_seconds=due_in_seconds,
+        requeue_in_session=due_in_seconds <= SESSION_REQUEUE_WINDOW_MINUTES * 60,
+        state=progress.state,
+        reps=progress.reps,
+        lapses=progress.lapses,
+        stability=progress.stability,
+        difficulty=progress.difficulty,
+        retrievability=progress.retrievability,
+    )
+
+
 def _tts_request_payload(word: str) -> Dict[str, Any]:
     if not TTS_REF_AUDIO_PATH:
         raise HTTPException(
             status_code=503,
-            detail="VOCABOS_TTS_REF_AUDIO is not configured",
+            detail="VOCABOS_TTS_REF_AUDIO_PATH is not configured",
         )
     ref_audio_path = Path(TTS_REF_AUDIO_PATH).expanduser()
     if not ref_audio_path.exists():
@@ -313,12 +516,7 @@ def _word_to_frontend_entry(word: Word, unit_id: str, progress: UserWordProgress
         "created_at": _dt_to_iso(note.created_at),
         "updated_at": _dt_to_iso(note.updated_at),
     } for note in word.notes]
-    status = {
-        "memorized_past": bool(progress.memorized_past) if progress else False,
-        "memorized_today": bool(progress.memorized_today) if progress else False,
-        "last_reviewed": _dt_to_iso(progress.last_reviewed_at) if progress else None,
-        "review_count": progress.review_count if progress else 0,
-    }
+    status = _study_status(progress)
     definitions = [line.strip() for line in (word.definition or "").splitlines() if line.strip()]
     return _with_default_example(
         {
@@ -460,6 +658,168 @@ async def get_db_dashboard():
         }
 
 
+@app.get("/api/db/study/today")
+async def get_study_today(
+    new_limit: int = Query(STUDY_NEW_LIMIT_DEFAULT, ge=0, le=100),
+    review_limit: int = Query(STUDY_REVIEW_LIMIT_DEFAULT, ge=0, le=200),
+):
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        now = _utc_now()
+
+        review_rows = (
+            await session.execute(
+                select(Word, Cluster.code, UserWordProgress)
+                .join(WordCluster, WordCluster.word_id == Word.id)
+                .join(Cluster, Cluster.id == WordCluster.cluster_id)
+                .join(
+                    UserWordProgress,
+                    and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+                )
+                .options(selectinload(Word.examples))
+                .where(
+                    or_(
+                        UserWordProgress.due <= _to_db_utc(now),
+                        and_(
+                            UserWordProgress.due.is_(None),
+                            or_(
+                                UserWordProgress.next_review_at <= _to_db_utc(now),
+                                UserWordProgress.next_review_at.is_(None),
+                            ),
+                        ),
+                    ),
+                    func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) > 0,
+                )
+                .order_by(
+                    func.coalesce(
+                        UserWordProgress.due,
+                        UserWordProgress.next_review_at,
+                        UserWordProgress.last_review,
+                        UserWordProgress.last_reviewed_at,
+                        UserWordProgress.created_at,
+                    ),
+                    Cluster.code,
+                    WordCluster.position,
+                )
+                .limit(review_limit)
+            )
+        ).all()
+
+        new_rows = (
+            await session.execute(
+                select(Word, Cluster.code, UserWordProgress)
+                .join(WordCluster, WordCluster.word_id == Word.id)
+                .join(Cluster, Cluster.id == WordCluster.cluster_id)
+                .outerjoin(
+                    UserWordProgress,
+                    and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+                )
+                .options(selectinload(Word.examples))
+                .where(func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) == 0)
+                .order_by(Cluster.code, WordCluster.position, Word.word)
+                .limit(new_limit)
+            )
+        ).all()
+
+        review_cards = [_study_card_payload(word, unit_id, progress, "review") for word, unit_id, progress in review_rows]
+        new_cards = [_study_card_payload(word, unit_id, progress, "new") for word, unit_id, progress in new_rows]
+
+        total_due_reviews = await session.scalar(
+            select(func.count())
+            .select_from(UserWordProgress)
+            .where(
+                UserWordProgress.user_id == user_id,
+                func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) > 0,
+                or_(
+                    UserWordProgress.due <= _to_db_utc(now),
+                    and_(
+                        UserWordProgress.due.is_(None),
+                        or_(
+                            UserWordProgress.next_review_at <= _to_db_utc(now),
+                            UserWordProgress.next_review_at.is_(None),
+                        ),
+                    ),
+                ),
+            )
+        ) or 0
+        total_new_cards = await session.scalar(
+            select(func.count())
+            .select_from(Word)
+            .outerjoin(
+                UserWordProgress,
+                and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+            )
+            .where(func.coalesce(UserWordProgress.reps, UserWordProgress.review_count, 0) == 0)
+        ) or 0
+
+        return {
+            "generated_at": _dt_to_iso(now),
+            "stats": {
+                "new_limit": new_limit,
+                "review_limit": review_limit,
+                "new_remaining": len(new_cards),
+                "review_remaining": len(review_cards),
+                "new_total": total_new_cards,
+                "review_total": total_due_reviews,
+            },
+            "queue": _merge_study_queue(review_cards, new_cards),
+        }
+
+
+@app.post("/api/db/study/review")
+async def post_study_review(req: StudyReviewRequest):
+    if req.rating not in {1, 2, 3, 4}:
+        raise HTTPException(status_code=400, detail="rating must be one of 1, 2, 3, 4")
+
+    async with AsyncSessionLocal() as session:
+        user_id = await _get_default_user_id(session)
+        row = (
+            await session.execute(
+                select(Word, Cluster.code, UserWordProgress)
+                .join(WordCluster, WordCluster.word_id == Word.id)
+                .join(Cluster, Cluster.id == WordCluster.cluster_id)
+                .outerjoin(
+                    UserWordProgress,
+                    and_(UserWordProgress.word_id == Word.id, UserWordProgress.user_id == user_id),
+                )
+                .options(selectinload(Word.examples))
+                .where(Word.id == req.word_id)
+                .order_by(WordCluster.position)
+                .limit(1)
+            )
+        ).first()
+        if not row:
+            raise HTTPException(status_code=404, detail="word not found")
+
+        word, unit_id, progress = row
+        if not progress:
+            progress = UserWordProgress(
+                user_id=user_id,
+                word_id=word.id,
+                status="new",
+                state=State.Learning.value,
+                fsrs_card_id=word.id,
+                reps=0,
+                review_count=0,
+                lapses=0,
+            )
+            session.add(progress)
+            await session.flush()
+
+        review_time = _utc_now()
+        card = _progress_to_card(progress, review_time)
+        reviewed_card, _review_log = FSRS_SCHEDULER.review_card(card, Rating(req.rating), review_datetime=review_time)
+        result = _apply_review_result(progress, reviewed_card, req.rating, review_time)
+        await session.commit()
+
+        queue_kind = "review" if progress.reps > 1 else "new"
+        return {
+            "ok": True,
+            "review": result.model_dump(),
+            "card": _study_card_payload(word, unit_id, progress, queue_kind),
+        }
+
+
 @app.post("/api/db/update_word", response_model=WordEntry)
 async def update_db_word(req: UpdateWordRequest):
     async with AsyncSessionLocal() as session:
@@ -485,9 +845,14 @@ async def update_db_word(req: UpdateWordRequest):
                 progress.memorized_past = True
                 if not was_reviewed_today:
                     progress.review_count += 1
-                progress.state = 2
+                    progress.reps = max(progress.reps or 0, progress.review_count)
+                progress.state = State.Review.value
                 progress.status = "review"
-                progress.last_reviewed_at = datetime.utcnow()
+                now = _to_db_utc(_utc_now())
+                progress.last_reviewed_at = now
+                progress.last_review = now
+                progress.next_review_at = progress.next_review_at or now
+                progress.due = progress.due or progress.next_review_at
         await session.commit()
         return await _get_db_word_entry(session, req.unit, req.word)
 

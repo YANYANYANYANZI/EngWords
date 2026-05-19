@@ -7,6 +7,14 @@ class WordStatus(BaseModel):
     memorized_today: bool
     last_reviewed: Optional[str]
     review_count: int
+    state: Optional[int] = None
+    stability: Optional[float] = None
+    difficulty: Optional[float] = None
+    retrievability: Optional[float] = None
+    lapses: Optional[int] = None
+    reps: Optional[int] = None
+    due: Optional[str] = None
+    last_review: Optional[str] = None
 
 
 class WordEntry(BaseModel):
@@ -37,6 +45,24 @@ class UpdateWordRequest(BaseModel):
     word: str
     memorized_past: Optional[bool] = None
     memorized_today: Optional[bool] = None
+
+
+class StudyReviewRequest(BaseModel):
+    word_id: int
+    rating: int
+
+
+class StudyRatingResult(BaseModel):
+    rating: int
+    due: Optional[str]
+    due_in_seconds: int
+    requeue_in_session: bool
+    state: int
+    reps: int
+    lapses: int
+    stability: Optional[float] = None
+    difficulty: Optional[float] = None
+    retrievability: Optional[float] = None
 
 
 class UpdateNoteRequest(BaseModel):
