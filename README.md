@@ -1,91 +1,151 @@
 # EngWords
 
-EngWords 是一个本地英语词汇学习项目，当前核心可分为两部分：
+EngWords 是当前唯一主仓库和唯一运行入口。它包含：
 
-1. 根目录词库整理脚本：把原始词表按语义聚成 `Unit / SubUnit`。
-2. `vocab_os/`：实际使用中的本地词卡系统，包含 FastAPI 后端、原生前端、SQLite 数据库、Tatoeba 例句和 GPT-SoVITS TTS 接口。
+- FastAPI 后端
+- 原生 HTML/CSS/JavaScript 前端
+- SQLite + Async SQLAlchemy 数据层
+- Tatoeba 英中例句导入
+- 外部 GPT-SoVITS TTS 接口
+- ECDICT 词典补全脚本
 
-当前以 `vocab_os/` 为主，根目录聚类脚本是离线数据准备工具，不是日常运行入口。
+项目已经从 `vocab_os/` 子目录结构提级到仓库根目录。`vocab_os/` 不再是应用入口。
 
-## 仓库结构
+## 目录结构
 
 ```text
 EngWords/
 ├── README.md
-├── vocab_cluster.py
-├── vocab_subcluster.py
-└── vocab_os/
-    ├── README.md
-    ├── requirements.txt
-    ├── backend/
-    ├── data_pipeline/
-    ├── frontend/
-    ├── scripts/
-    ├── data/
-    ├── db/
-    └── media/
+├── .env.example
+├── requirements.txt
+├── backend/
+├── frontend/
+├── data/
+│   ├── source/
+│   ├── tatoeba/
+│   └── unit_summaries/
+├── data_pipeline/
+├── scripts/
+│   ├── setup_external.sh
+│   ├── import_tatoeba.py
+│   ├── fill_ai_examples.py
+│   ├── init_data.py
+│   ├── vocab_cluster.py
+│   └── vocab_subcluster.py
+├── db/
+└── media/
 ```
-
-## 当前状态
-
-- 主应用已切到 SQLite + Async SQLAlchemy。
-- 兼容路由 `/api/units`、`/api/words/{unit_id}`、`/api/update_word` 等已经代理到数据库实现。
-- 数据库当前规模：
-  - `words`: 6946
-  - `clusters`: 84
-  - `examples.source_type='tatoeba'`: 7916
-  - `examples.source_type='user'`: 37
-- Tatoeba 英中例句缓存位于 `vocab_os/data/tatoeba/`。
-- GPT-SoVITS 的 `fast-langdetect` 大模型已确认应放在：
-  `GPT_SoVITS/pretrained_models/fast_langdetect/lid.176.bin`
 
 ## 快速启动
 
-日常使用只需要启动 `vocab_os/`。
-
-后端：
+安装依赖：
 
 ```bash
-cd /Users/leron/PycharmProjects/EngWords/vocab_os
+cd /Users/leron/PycharmProjects/EngWords
+/Users/leron/miniconda3/envs/base311/bin/pip install -r requirements.txt
+```
+
+复制本地配置：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords
+cp .env.example .env
+```
+
+启动后端：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords
 /Users/leron/miniconda3/envs/base311/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 ```
 
-前端：
+启动前端：
 
 ```bash
-cd /Users/leron/PycharmProjects/EngWords/vocab_os
+cd /Users/leron/PycharmProjects/EngWords
 /Users/leron/miniconda3/envs/base311/bin/python -m http.server 8080 --directory frontend
 ```
 
 访问：
 
-```text
-http://127.0.0.1:8080/index.html
-```
+- 前端：`http://127.0.0.1:8080/index.html`
+- API：`http://127.0.0.1:8000/api/units`
+- 数据库健康检查：`http://127.0.0.1:8000/api/db_health`
 
-完整启动、初始化、Tatoeba 导入、TTS 依赖和已知问题见：
+## 数据初始化
 
-```text
-vocab_os/README.md
-```
-
-## 词库聚类脚本
-
-如果要重新生成 Excel 词库：
+建表：
 
 ```bash
-python vocab_cluster.py
-python vocab_subcluster.py
+python -m backend.core.init_db
 ```
 
-注意：
+导入旧 JSON 词库到 SQLite：
 
-- 这两个脚本不是 VocabOS 运行所必需。
-- 脚本里可能仍包含本机路径假设，换机器运行前要先检查输入文件路径。
+```bash
+python -m data_pipeline.import_legacy_json
+```
 
-## 已知问题
+导入 Tatoeba 英中例句：
 
-- 当前仓库正在从旧 JSON 词库迁移到 SQLite；旧 README 中“JSON 仍是主存储”的说法已经过时。
-- TTS 不内置在本仓库里，依赖外部 GPT-SoVITS 服务。
-- `base311` 环境里的 PyTorch 已重装为 arm64 稳定版，但 `torch.backends.mps.is_available()` 仍为 `False`；这意味着 macOS MPS 加速问题尚未解决。
-- 工作区当前存在较多未提交的数据与前端改动，提交前应确认是否都需要进入同一个 commit。
+```bash
+python scripts/import_tatoeba.py
+```
+
+批量补全 DeepSeek AI 例句：
+
+```bash
+python scripts/fill_ai_examples.py --limit 50
+```
+
+导入 ECDICT：
+
+```bash
+python -m data_pipeline.import_ecdict /path/to/ecdict.csv
+```
+
+## 外部依赖
+
+`ECDICT` 和 `GPT-SoVITS` 不 vendoring 到本仓库。它们保持外部依赖形态。
+
+初始化外部目录：
+
+```bash
+cd /Users/leron/PycharmProjects/EngWords
+bash scripts/setup_external.sh
+```
+
+默认会准备：
+
+- `../_external/GPT-SoVITS`
+- `../_external/ECDICT`
+
+你需要额外完成：
+
+1. 把 `ecdict.csv` 放到 `../_external/ECDICT/`，或自定义 `ECDICT_CSV_PATH`
+2. 单独启动 GPT-SoVITS 服务
+3. 如需覆盖 TTS 地址或参考音频路径，在 `.env` 中设置：
+   `VOCABOS_TTS_API_URL`
+   `VOCABOS_TTS_REF_AUDIO_PATH`
+
+## 离线词库脚本
+
+这些脚本不是日常运行入口，统一放在 `scripts/`：
+
+- `scripts/vocab_cluster.py`
+- `scripts/vocab_subcluster.py`
+- `scripts/init_data.py`
+
+示例：
+
+```bash
+python scripts/vocab_cluster.py /path/to/raw_words.xlsx
+python scripts/vocab_subcluster.py
+python scripts/init_data.py
+```
+
+## 当前说明
+
+- 例句默认优先级为：`pinned > tatoeba > ai > movie > subtitle > default > user`
+- `POST /api/db/swap_example` 可把现有例句置顶为默认例句
+- 根目录现在是唯一 README、唯一启动路径、唯一项目入口

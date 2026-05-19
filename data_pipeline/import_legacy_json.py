@@ -5,7 +5,7 @@ clusters, examples, notes and the default local user's progress without deleting
 anything. The old JSON files remain the source of truth until APIs are switched
 to the database in a later phase.
 
-Run from vocab_os/:
+Run from the project root:
 
     python -m data_pipeline.import_legacy_json
 """

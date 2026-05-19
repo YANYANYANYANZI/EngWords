@@ -8,3 +8,4 @@ greenlet
 pydantic
 python-dotenv
 httpx
+openai

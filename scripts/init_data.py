@@ -1,16 +1,17 @@
-#!/usr/bin/env python3
-"""Initialize vocab JSON database from subclustered_words.xlsx."""
-from pathlib import Path
-import json
-import pandas as pd
-from datetime import datetime
-from sentence_transformers import SentenceTransformer
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
+"""Initialize legacy JSON unit files from the tracked source workbook."""
 
-BASE_DIR = Path(__file__).parent
-DATA_DIR = BASE_DIR / "data"
-XLSX_PATH = BASE_DIR / "subclustered_words.xlsx"
+import json
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
+XLSX_PATH = ROOT_DIR / "data" / "source" / "subclustered_words.xlsx"
 
 COLUMN_WORD = "Column1"
 COLUMN_TRANSLATION = "Column2"

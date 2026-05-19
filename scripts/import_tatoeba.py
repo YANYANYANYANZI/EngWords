@@ -1,6 +1,6 @@
 """Import short English-Chinese Tatoeba examples into the examples table.
 
-Run from ``vocab_os/``:
+Run from the project root:
 
     python scripts/import_tatoeba.py
 

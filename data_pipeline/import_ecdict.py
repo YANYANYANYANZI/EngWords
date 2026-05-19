@@ -1,6 +1,6 @@
 """Import selected ECDICT rows into the new words table.
 
-Usage from vocab_os/:
+Usage from the project root:
 
     python -m data_pipeline.import_ecdict /path/to/ecdict.csv
 

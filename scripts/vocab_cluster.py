@@ -1,6 +1,16 @@
+"""Cluster a raw vocabulary workbook into Unit sheets."""
+
+import argparse
+from pathlib import Path
+
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
+
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT = ROOT_DIR / "data" / "source" / "clustered_words.xlsx"
+
 
 def cluster_vocabulary(input_excel, output_excel, num_clusters=12):
     print("1. 正在读取单词表...")
@@ -36,7 +46,11 @@ def cluster_vocabulary(input_excel, output_excel, num_clusters=12):
     print(f"🎉 大功告成！文件已保存为: {output_excel}")
 
 
-# 运行你的程序
 if __name__ == "__main__":
-    # 输入文件改为绝对路径（考研词汇表）
-    cluster_vocabulary(input_excel='/Users/leron/Desktop/考研词汇表.xlsx', output_excel='clustered_words.xlsx')
+    parser = argparse.ArgumentParser(description="Cluster a vocabulary Excel file into Unit sheets.")
+    parser.add_argument("input_excel", type=Path, help="Path to the source Excel workbook.")
+    parser.add_argument("--output-excel", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--num-clusters", type=int, default=12)
+    args = parser.parse_args()
+    args.output_excel.parent.mkdir(parents=True, exist_ok=True)
+    cluster_vocabulary(args.input_excel, args.output_excel, num_clusters=args.num_clusters)

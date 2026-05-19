@@ -9,7 +9,7 @@ from typing import Any, Dict, List
 import difflib
 from dotenv import load_dotenv
 
-# 加载 .env 文件（vocab_os/.env）
+# 加载项目根目录 .env 文件
 dotenv_path = Path(__file__).resolve().parent.parent / ".env"
 if dotenv_path.exists():
     load_dotenv(dotenv_path)
@@ -28,6 +28,7 @@ from .core.config import BASE_DIR
 from .core.database import AsyncSessionLocal
 from .models import (
     EnrichWordRequest,
+    SwapExampleRequest,
     UnitInfo,
     UnitSummaryRequest,
     UpdateNoteRequest,
@@ -58,13 +59,13 @@ NAHIDA_CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 TTS_API_URL = os.getenv("VOCABOS_TTS_API_URL", "http://127.0.0.1:9880/tts")
-
-# --- 强制写死这两个最核心的灵魂参数 ---
-TTS_REF_AUDIO_PATH = "/Users/leron/PycharmProjects/EngWords/vocab_os/media/audio/nahida/nahida_ref.wav"
+TTS_REF_AUDIO_PATH = os.getenv(
+    "VOCABOS_TTS_REF_AUDIO_PATH",
+    str(BASE_DIR / "media" / "audio" / "nahida" / "nahida_ref.wav"),
+)
 TTS_PROMPT_TEXT = "快去避雨吧，小心头顶上长出蘑菇哦。"
 TTS_PROMPT_LANG = "zh"
 TTS_TEXT_LANG = "en"
-# --------------------------------------
 
 TTS_SPLIT_METHOD = os.getenv("VOCABOS_TTS_SPLIT_METHOD", "cut0")
 TTS_BATCH_SIZE = int(os.getenv("VOCABOS_TTS_BATCH_SIZE", "1"))
@@ -180,10 +181,11 @@ def _default_example(word: str, translation: str) -> str:
 
 def _example_source_priority(source_type: str) -> int:
     priorities = {
+        "pinned": -1,
         "tatoeba": 0,
-        "movie": 1,
-        "subtitle": 2,
-        "ai": 3,
+        "ai": 1,
+        "movie": 2,
+        "subtitle": 3,
         "default": 4,
         "user": 9,
     }
@@ -488,6 +490,50 @@ async def update_db_word(req: UpdateWordRequest):
                 progress.last_reviewed_at = datetime.utcnow()
         await session.commit()
         return await _get_db_word_entry(session, req.unit, req.word)
+
+
+@app.post("/api/db/swap_example")
+async def swap_db_example(req: SwapExampleRequest):
+    async with AsyncSessionLocal() as session:
+        word = await session.scalar(
+            select(Word)
+            .options(selectinload(Word.examples))
+            .where(Word.normalized == _norm(req.word))
+            .limit(1)
+        )
+        if not word:
+            raise HTTPException(status_code=404, detail="word not found")
+
+        target_text = (req.target_example or "").strip()
+        if not target_text:
+            raise HTTPException(status_code=400, detail="target_example is required")
+
+        examples = list(word.examples or [])
+        if not examples:
+            raise HTTPException(status_code=404, detail="examples not found")
+
+        current_default_text = _select_default_example_text(examples, word.word, word.translation or "")
+        target_example = next((example for example in examples if (example.text or "").strip() == target_text), None)
+        current_default = next((example for example in examples if example.text == current_default_text), None)
+
+        if not target_example:
+            raise HTTPException(status_code=404, detail="target example not found")
+
+        target_example.source_type = "pinned"
+        target_example.source_name = target_example.source_name or "frontend"
+
+        if current_default and current_default.id != target_example.id:
+            current_default.source_type = "user"
+            current_default.source_name = current_default.source_name or "frontend"
+
+        await session.commit()
+        return {
+            "success": True,
+            "msg": "Example swapped successfully",
+            "word": word.word,
+            "default_example": target_example.text,
+            "downgraded_example": current_default.text if current_default and current_default.id != target_example.id else None,
+        }
 
 
 @app.post("/api/db/update_note", response_model=WordEntry)

@@ -55,6 +55,11 @@ class EnrichWordRequest(BaseModel):
     chinese: Optional[str] = None
 
 
+class SwapExampleRequest(BaseModel):
+    word: str
+    target_example: str
+
+
 class UnitSummaryRequest(BaseModel):
     unit: str
     summary: str

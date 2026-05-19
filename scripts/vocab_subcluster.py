@@ -1,7 +1,17 @@
+"""Split clustered Unit sheets into smaller SubUnit sheets."""
+
+import argparse
+import math
+from pathlib import Path
+
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
-import math
+
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_INPUT = ROOT_DIR / "data" / "source" / "clustered_words.xlsx"
+DEFAULT_OUTPUT = ROOT_DIR / "data" / "source" / "subclustered_words.xlsx"
 
 def subcluster_vocabulary(input_excel, output_excel, target_words_per_subunit=90):
     print("1. 正在读取聚类后的单词表...")
@@ -51,10 +61,15 @@ def subcluster_vocabulary(input_excel, output_excel, target_words_per_subunit=90
 
     print(f"🎉 细分聚类完成！文件保存为: {output_excel}")
 
-# 运行程序
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Split clustered Unit sheets into smaller SubUnit sheets.")
+    parser.add_argument("--input-excel", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--output-excel", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--target-words-per-subunit", type=int, default=90)
+    args = parser.parse_args()
+    args.output_excel.parent.mkdir(parents=True, exist_ok=True)
     subcluster_vocabulary(
-        input_excel='clustered_words.xlsx',
-        output_excel='subclustered_words.xlsx',
-        target_words_per_subunit=90  # 每个子单元约90词
+        input_excel=args.input_excel,
+        output_excel=args.output_excel,
+        target_words_per_subunit=args.target_words_per_subunit,
     )
